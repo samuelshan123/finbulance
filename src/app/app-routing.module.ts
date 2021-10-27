@@ -9,7 +9,7 @@ const routes: Routes = [
   // {
   //   path: '',
   //   redirectTo: 'home',
-  //   pathMatch: 'full'
+  //   pathMatch: 'full's
   // },
   {
     path: 'register',
@@ -23,6 +23,8 @@ const routes: Routes = [
     path: 'splash',
     loadChildren: () => import('./splash/splash.module').then( m => m.SplashPageModule)
   },
+  
+
 ];
 
 @NgModule({

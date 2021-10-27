@@ -4,8 +4,8 @@ import { IonicModule } from '@ionic/angular';
 import { InputComponent } from '../input/input.component';
 
 @NgModule({
-  declarations: [InputComponent],
+  declarations: [InputComponent,],
   imports: [CommonModule, IonicModule],
-  exports: [InputComponent],
+  exports: [InputComponent,],
 })
 export class SharedModule {}
