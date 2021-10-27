@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "finbulance",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
