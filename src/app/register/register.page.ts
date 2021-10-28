@@ -16,7 +16,8 @@ export class RegisterPage implements OnInit {
   submitted = false;
 
   
-  
+  textBoxDisabled = true;
+
 
   constructor(  
     private router: Router,public formBuilder: FormBuilder,public toastCtrl:ToastController
@@ -24,29 +25,37 @@ export class RegisterPage implements OnInit {
      }
 
   ngOnInit() {
-  
     this.regForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(4)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
      phone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-     type: ['', [Validators.required]],
+     type: ['', [Validators.required]]
     //  servicename:['',[Validators.required]],
     //  orgname: ['', [Validators.required]],
     //  pan:['',[Validators.required]]
+  
    })
   }
  
   
-check(){
-  console.log('checked');
-  
+check(e){
+
+  console.log('checked :',e);
+
   this.regForm= this.formBuilder.group({
     
       servicename:['',[Validators.required]],
       orgname: ['', [Validators.required]],
       pan:['',[Validators.required]]
   })
+  // this.regForm =new FormGroup({
+  //   servicename:new FormControl('',Validators.required),
+  //   orgname:new FormControl('',Validators.required),
+  //   pan:new FormControl('',Validators.required),
+
+
+  // })
 
 }
   get errorCtr() {  

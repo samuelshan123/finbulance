@@ -51,19 +51,24 @@ Finbulance    </ion-title>
       <div>
 
         <div style="margin-top: 10px;">
-          <input  [(ngModel)]="type" type="radio" class="custom-control-input" value="service requester" name="type" formControlName="type">
-          <label  style="margin-left: 5px;" class="custom-control-label">Service Requester</label>
+          <label   style="margin-left: 5px;" class="custom-control-label">
+            <input  [(ngModel)]="type" type="radio" value="service requester"  name ="type" formControlName="type"
+            >
+            Service Requester </label>
           
         <div style="margin-top: 5px;padding-bottom: 15px;">
-          <input [(ngModel)]="type" type="radio" class="custom-control-input" value="service provider" name="type" formControlName="type">
-          <label style="margin-left: 5px;" class="custom-control-label" >Service Provider</label>
+        
+          <label style="margin-left: 5px;"  >
+            <input  [(ngModel)]="type" type="radio"  value="service provider" name="type"formControlName="type"
+              >
+            Service Provider</label>
         </div>
             
         
       <!-- <div  *ngIf="type ==='service requester'"></div>  -->
       </div>
 
-      <div  *ngIf="type ==='service provider'">
+      <div  *ngIf="type ==='service provider' " >
       
 
 
