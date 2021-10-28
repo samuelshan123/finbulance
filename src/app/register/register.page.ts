@@ -60,7 +60,7 @@ check(e){
 }
   get errorCtr() {  
     return this.regForm.controls;
-    
+     
   }
 
 
