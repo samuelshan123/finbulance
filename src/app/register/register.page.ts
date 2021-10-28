@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { ToastController } from '@ionic/angular';
 export class RegisterPage implements OnInit {
 
 
+  
   regForm: FormGroup;
   submitted = false;
 
@@ -20,8 +22,8 @@ export class RegisterPage implements OnInit {
 
 
   constructor(  
-    private router: Router,public formBuilder: FormBuilder,public toastCtrl:ToastController
-    ) {
+    private router: Router,public formBuilder: FormBuilder,public toastCtrl:ToastController,
+   private http:HttpClient ) {
      }
 
   ngOnInit() {
@@ -100,12 +102,28 @@ if (service=="service provider") {
   }  
 
   onSubmit() {
+    
+    const regData = {
+      name:this.regForm.value.name,
+      email: this.regForm.value.email,
+      phone: this.regForm.value.phone,
+      password: this.regForm.value.password,
+      type: this.regForm.value.type,
+      servicename: this.regForm.value.servicename,
+      orgname: this.regForm.value.orgname,
+      pan: this.regForm.value.pan
+  }
     this.submitted = true;
+
     if (!this.regForm.valid) {
       console.log('All fields are required.')
       return false;
     } else {
       this.openToast();
+      this.http.post("http://localhost:1337/fb-users",regData).subscribe((res)=>{
+        console.log(res);
+        this.router.navigateByUrl('login')
+      })
       console.log(this.regForm.value)     
     }
   }
