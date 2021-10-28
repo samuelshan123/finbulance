@@ -1,9 +1,122 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>register</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-header>  
+  <ion-toolbar>  
+    <ion-title style="margin-left: 10px;">  
+Finbulance    </ion-title>  
+  </ion-toolbar>  
+</ion-header>  
 
-<ion-content>
 
+
+<ion-content class="ion-padding">
+  <h1>Create Account,</h1>
+  <h3>Sign up to get started!</h3>
+
+  <form [formGroup]="regForm" (ngSubmit)="onSubmit()" novalidate>
+    <app-input label="Full Name" 
+    formControlName="name" type="text" ngDefaultControl ></app-input> 
+   
+    <span class="error ion-padding" *ngIf="submitted && errorCtr.name.errors?.required">
+      Name is required.
+    </span>
+    <span class="error ion-padding" *ngIf="submitted && errorCtr.name.errors?.minlength">
+      Min 4 chars long.
+    </span>
+    
+    <app-input label="Email ID"  type="email"  formControlName="email"
+     ngDefaultControl  ></app-input>
+    
+     <span class="error" *ngIf="submitted && errorCtr.email.errors?.required">
+      Email is required.
+    </span>
+    <span class="error" *ngIf="submitted && errorCtr.email.errors?.pattern">
+      Enter valid email.
+    </span>
+    
+    <app-input label="Phone" 
+    formControlName="phone" type="numeric" ngDefaultControl ></app-input> 
+    <span class="error ion-padding" *ngIf="submitted && errorCtr.phone.errors?.required">
+      phone is required.
+    </span>
+    <app-input label="Password" type="password" ngDefaultControl formControlName="password" ></app-input>
+    <span class="error" *ngIf="submitted && errorCtr.password.errors?.required">
+      Password is required.
+    </span>
+    <span class="error" *ngIf="submitted && errorCtr.password.errors?.minlength">
+     Password should minimum 8 chars long.
+    </span>
+   
+    <!-- Gender -->
+    <div style="text-align: justify;margin-left: 10px;">
+      <h6 style="font-weight: 600;">Service Type</h6>
+      <div>
+
+        <div style="margin-top: 10px;">
+          <label   style="margin-left: 5px;" class="custom-control-label">
+            <input  [(ngModel)]="type" type="radio" value="service requester"  name ="type" formControlName="type"
+            >
+            Service Requester </label>
+          
+        <div style="margin-top: 5px;padding-bottom: 15px;">
+        
+          <label style="margin-left: 5px;"  >
+            <input  [(ngModel)]="type" type="radio"  value="service provider" name="type"formControlName="type"
+              >
+            Service Provider</label>
+        </div>
+            
+        
+      <!-- <div  *ngIf="type ==='service requester'"></div>  -->
+      </div>
+
+      <div  *ngIf="type ==='service provider' " >
+      
+
+
+        <app-input label="Service Name" 
+    formControlName="servicename" type="text" ngDefaultControl ></app-input> 
+    <span class="error ion-padding" *ngIf="submitted && errorCtr.servicename.errors?.required">
+      Service Type is required.
+    </span>
+
+    <app-input label="Organization Name" 
+    formControlName="orgname" type="text" ngDefaultControl></app-input> 
+    <span class="error ion-padding" *ngIf="submitted && errorCtr.orgname.errors?.required">
+      Organization Name is required.
+    </span>
+
+    <app-input label="Pan Number" 
+    formControlName="pan" type="text" ngDefaultControl ></app-input> 
+    <span class="error ion-padding" *ngIf="submitted && errorCtr.pan.errors?.required">
+      Pan Number is required.
+    </span>
+      </div>
+        <!-- <div class="error" *ngIf="submitted && errorCtr.errors?.required">
+          <p>Please select either value</p>
+        </div> -->
+      </div>
+    </div>
+    
+
+    <!-- <app-input label="Full Name" [(ngModel)]="post.name" [ngModelOptions]="{standalone: true} " ngDefaultControl ></app-input>
+    <app-input label="Email ID" [(ngModel)]="post.email"[ngModelOptions]="{standalone: true} "ngDefaultControl ></app-input>
+    <app-input label="Password" type="password" [(ngModel)]="post.password "[ngModelOptions]="{standalone: true}"ngDefaultControl ></app-input> -->
+    <!-- <label for="type" style="font-weight: 600;">User type</label>
+   
+    <label class="container">Service Requester
+      <input id="requester" type="radio" name="requester" formControlName="requester" (change)="changeGender($event)">
+      <span class="checkmark"></span>
+    </label>
+    <label class="container">Service Provider
+      <input  id="provider" type="radio"  name="provider" formControlName="provider" (change)="changeGender($event)">
+      <span class="checkmark"></span>
+    </label>
+    <div *ngIf="submitted.type.touched && f.type.invalid" class="error">
+      <div *ngIf="f.type.errors.required">type is required.</div>
+  </div> -->
+    
+    <button type="submit" class="button" expand="block">Register</button>
+    <!--<app-icon-button icon='logo-facebook' label='Connect with Facebook'></app-icon-button>-->
+  </form>
+
+  <p class="footer-text">I'm already a member, <a routerLink="/login">Sign In</a></p>
 </ion-content>
