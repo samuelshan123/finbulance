@@ -88,22 +88,21 @@ this.login();
 
     this.http.get(`${this.API}/?email=${email}&&password=${password}`)
     .subscribe((res)=>{
-      console.log(res);
 
     if (res[0].type=="service provider") {
       console.log(res)
       console.log(res[0].type);
-
       this.openSucessToast();
-
           this.router.navigate(["/home"]);
 
-    } else {
+    } else if (res[0].type=="service requester"){
       console.log(res)
       console.log(res[0].type);
-
      this.router.navigate(["/register"]);
-
+    }
+    else{
+      console.log("something went wrong");
+      this.openFailToast()
       
     }
       
