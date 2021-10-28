@@ -103,16 +103,16 @@ if (service=="service provider") {
 
   onSubmit() {
     
-    const regData = {
-      name:this.regForm.value.name,
-      email: this.regForm.value.email,
-      phone: this.regForm.value.phone,
-      password: this.regForm.value.password,
-      type: this.regForm.value.type,
-      servicename: this.regForm.value.servicename,
-      orgname: this.regForm.value.orgname,
-      pan: this.regForm.value.pan
-  }
+  //   const regData = {
+  //     name:this.regForm.value.name,
+  //     email: this.regForm.value.email,
+  //     phone: this.regForm.value.phone,
+  //     password: this.regForm.value.password,
+  //     type: this.regForm.value.type,
+  //     servicename: this.regForm.value.servicename,
+  //     orgname: this.regForm.value.orgname,
+  //     pan: this.regForm.value.pan
+  // }
     this.submitted = true;
 
     if (!this.regForm.valid) {
@@ -120,7 +120,7 @@ if (service=="service provider") {
       return false;
     } else {
       this.openToast();
-      this.http.post("http://localhost:1337/fb-users",regData).subscribe((res)=>{
+      this.http.post("http://localhost:1337/fb-users",this.regForm.value).subscribe((res)=>{
         console.log(res);
         this.router.navigateByUrl('login')
       })
