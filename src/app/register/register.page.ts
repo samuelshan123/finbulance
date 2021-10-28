@@ -69,7 +69,7 @@ if (service=="service provider") {
 
   async openToast() {  
     const toast = await this.toastCtrl.create({  
-      message: 'Logging in Please wait.....',
+      message: 'Registring Please wait.....',
             duration: 2000  
 
     });  
@@ -102,17 +102,6 @@ if (service=="service provider") {
   }  
 
   onSubmit() {
-    
-  //   const regData = {
-  //     name:this.regForm.value.name,
-  //     email: this.regForm.value.email,
-  //     phone: this.regForm.value.phone,
-  //     password: this.regForm.value.password,
-  //     type: this.regForm.value.type,
-  //     servicename: this.regForm.value.servicename,
-  //     orgname: this.regForm.value.orgname,
-  //     pan: this.regForm.value.pan
-  // }
     this.submitted = true;
 
     if (!this.regForm.valid) {
@@ -122,6 +111,7 @@ if (service=="service provider") {
       this.openToast();
       this.http.post("http://localhost:1337/fb-users",this.regForm.value).subscribe((res)=>{
         console.log(res);
+        this.openSucessToast();
         this.router.navigateByUrl('login')
       })
       console.log(this.regForm.value)     
