@@ -44,7 +44,6 @@ export class LoginPage implements OnInit {
     const toast = await this.toastCtrl.create({  
       message: 'Login SuccessFull...',
             duration: 2000  
-
     });  
     toast.present();  
     toast.onDidDismiss().then((val) => {  
@@ -74,9 +73,8 @@ export class LoginPage implements OnInit {
       return false;
     } else {
       this.openToast();
-this.login();
+      this.login();
       console.log(this.myForm.value)
-// this.loginUser();
     }
   }
   togglePasswordFieldType(){
@@ -87,43 +85,33 @@ this.login();
   let  password=this.myForm.value.password;
 
     this.http.get(`${this.API}/?email=${email}&&password=${password}`)
+    // this.http.post(this.API,this.myForm.value)
     .subscribe((res)=>{
-
     if (res[0].type=="service provider") {
-      console.log(res)
+      console.log(res);
       console.log(res[0].type);
       this.openSucessToast();
-          this.router.navigate(["/home"]);
+      localStorage.setItem("user",res[0].name);
+      console.log(res[0].name);
+      this.router.navigate(["/home"]);
 
     } else if (res[0].type=="service requester"){
-      console.log(res)
+      console.log(res);
       console.log(res[0].type);
-     this.router.navigate(["/register"]);
+      localStorage.setItem("user",res[0].name);
+      console.log(res[0].name);
+      this.router.navigate(["/home"]);
     }
     else{
       console.log("something went wrong");
-      this.openFailToast()
+      this.openFailToast();
       
     }
       
     });
       }
     }
-  // loginUser(){
-  //   this.postService
-  //   .login(this.email,this.password)
-  //   .subscribe((res) => {
-  //     if (res.length==0) {
-  //       console.log("invalid credentials")
-  //       this.openFailToast();
-  //     } else {
-  //       this.openSucessToast();
-  //       console.log(res);
-  //       this.router.navigate(["/dashboard"]);
-  //     }
-     
-  //   });
-  // }
+ 
 
-  
+    
 

@@ -6,7 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+name:string;
+  constructor() {
+    this.loadUser();
+  }
 
-  constructor() {}
+  loadUser(){
+    if(!localStorage.getItem("user")){
+console.log("user not set ");
+
+    }else{
+     this.name= localStorage.getItem("user");
+    }
+  }
+  
 
 }
