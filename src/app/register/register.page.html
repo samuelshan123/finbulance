@@ -71,8 +71,8 @@ Finbulance    </ion-title>
       <div  *ngIf="type ==='service provider'" >
       
 
-
-        <!-- <app-input label="Service Name" 
+<!-- 
+        <app-input label="Service Name" 
     formControlName="servicename" type="text" ngDefaultControl ></app-input> 
     <span class="error ion-padding" *ngIf="submitted && errorCtr.servicename.errors?.required">
       Service Type is required.
@@ -82,13 +82,12 @@ Finbulance    </ion-title>
         <option value="">Choose your service</option>
         <option *ngFor="let service of Service" [ngValue]="service">{{service}}</option>
       </select>
-
-      <!-- error block -->
+      
       <div class="error" *ngIf="submitted && errorCtr.servicename.errors?.required">
         <sup>*</sup>select any service
       </div>
     </div> 
-
+    
     <app-input label="Organization Name" 
     formControlName="orgname" type="text" ngDefaultControl></app-input> 
     <span class="error ion-padding" *ngIf="submitted && errorCtr.orgname.errors?.required">
