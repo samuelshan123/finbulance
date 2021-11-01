@@ -8,8 +8,6 @@ import { MenuController, Platform } from '@ionic/angular';
 })
 export class HomePage {
 
- 
-
 
   Pages = [
     {
