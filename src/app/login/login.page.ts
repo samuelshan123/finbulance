@@ -25,7 +25,6 @@ export class LoginPage implements OnInit {
     this.myForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       password: ['', [Validators.required, Validators.minLength(8)]]
-
       // phone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]]
     })
   }
@@ -85,18 +84,23 @@ export class LoginPage implements OnInit {
     this.http.get(`${this.API}/?email=${email}&&password=${password}`)
     // this.http.post(this.API,this.myForm.value)
     .subscribe((res)=>{
+      console.log(res);
+
     if (res[0].type=="service provider") {
       console.log(res);
       console.log(res[0].type);
       this.openSucessToast();
-      localStorage.setItem("user",res[0].name);
-      console.log(res[0].name);
+      localStorage.setItem("name",res[0].name);
+      localStorage.setItem("email",res[0].email);
+      this.openSucessToast();
       this.router.navigate(["/home"]);
 
     } else if (res[0].type=="service requester"){
       console.log(res);
       console.log(res[0].type);
-      localStorage.setItem("user",res[0].name);
+      localStorage.setItem("name",res[0].name);
+      localStorage.setItem("email",res[0].email);
+
       console.log(res[0].name);
       this.router.navigate(["/home"]);
     }

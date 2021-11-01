@@ -17,8 +17,7 @@ export class RegisterPage implements OnInit {
   regForm: FormGroup;
   submitted = false;
 
-  
-  textBoxDisabled = true;
+  Service: any = ['Finance', 'Construction', 'Tennessee', 'Michigan']
 
 
   constructor(  
