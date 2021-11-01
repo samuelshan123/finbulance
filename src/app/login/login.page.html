@@ -1,9 +1,39 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
+<ion-header>  
+  <ion-toolbar>  
+    <ion-title style="margin-left: 10px;">  
+Finbulance    </ion-title>  
+  </ion-toolbar>  
+</ion-header>  
 
+
+<ion-content class="ion-padding">
+  <h1>Welcome,</h1>
+  <h3>Sign in to continue!</h3>
+
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()" novalidate>
+    <app-input label="Email ID"  type="email"  formControlName="email" ngDefaultControl ></app-input>
+    <span class="error" *ngIf="submitted && errorCtr.email.errors?.required">
+      Email is required.
+    </span>
+    <span class="error" *ngIf="submitted && errorCtr.email.errors?.pattern">
+      Enter valid email.
+    </span>
+    <app-input label="Password" type="password" formControlName="password"  ngDefaultControl></app-input>
+    <span class="error" *ngIf="submitted && errorCtr.password.errors?.required">
+      Password is required.
+    </span>
+    <span class="error" *ngIf="submitted && errorCtr.password.errors?.minlength">
+     Password should minimum 8 chars long.
+    </span>
+    <a routerLink="/forgotpassword" class="forgot-password-link">Forgot Password?</a>
+    <!-- <app-input label="Email ID"></app-input>
+    <app-input label="Password" type="password"></app-input>
+    <a routerLink="#" class="forgot-password-link">Forgot Password?</a> -->
+    
+    <button type="submit" class="button" >Login</button>
+    <!-- <app-icon-button icon='logo-facebook' label='Connect with Facebook'></app-icon-button> -->
+  </form>
+
+  <p class="footer-text">I'm a new user, <a routerLink="/register">Sign Up</a></p>
 </ion-content>
