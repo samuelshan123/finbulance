@@ -8,11 +8,7 @@ import { MenuController, Platform } from '@ionic/angular';
 })
 export class HomePage {
 name:string;
-  constructor() {
-    this.loadUser();
-  }
-
-
+  
   Pages = [
     {
       title: 'Services',
