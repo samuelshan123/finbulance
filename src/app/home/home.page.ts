@@ -7,10 +7,8 @@ import { MenuController, Platform } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-name:string;
-  constructor() {
-    this.loadUser();
-  }
+
+ 
 
 
   Pages = [
