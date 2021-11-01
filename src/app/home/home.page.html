@@ -1,20 +1,46 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar> 
-  </ion-header>
+<ion-menu contentId="content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <!-- <ion-menu-button autoHide="false"></ion-menu-button> -->
+          </ion-buttons>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      
+      <ion-content>
+          <div *ngFor="let p of Pages">
+            <ion-menu-toggle *ngIf="p.url">
+              <ion-item routerDirection="root" [routerLink]="[p.url]" routerLinkActivate="active">
+                <ion-icon [name]="p.icon" slot="start"></ion-icon>
+                <ion-label>{{p.title}}</ion-label>
+              </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?{{name}}</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+            </ion-menu-toggle>
+
+            <ion-item button *ngIf="p.children?.length > 0" (click)="p.open=!p.open" [class.active-parent]="p.open"
+              detail="false">
+              <ion-icon slot="start" name="arrow-up" *ngIf="!p.open"></ion-icon>
+              <ion-icon slot="start" name="arrow-down" *ngIf="p.open"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+            <ion-list *ngIf="p.open">
+              <ion-menu-toggle >
+                <ion-item class="sub-item" *ngFor="let sub of p.children" routerDirection="root" [routerLink]="[sub.url]" routerLinkActivate="active">
+                  <ion-icon [name]="sub.icon" slot="start"></ion-icon>
+                  <ion-label>{{sub.title}}</ion-label>
+                </ion-item>
+
+              </ion-menu-toggle>
+            </ion-list>
+          </div>
+
+       
+
+      </ion-content>
+
+    </ion-menu>
+
+    <ion-router-outlet id="content" main></ion-router-outlet>
+
