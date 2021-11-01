@@ -12,14 +12,14 @@ Finbulance    </ion-title>
   <h3>Sign in to continue!</h3>
 
   <form [formGroup]="myForm" (ngSubmit)="onSubmit()" novalidate>
-    <app-input label="Email ID"  type="email" [(ngModel)]="email" formControlName="email" ngDefaultControl ></app-input>
+    <app-input label="Email ID"  type="email"  formControlName="email" ngDefaultControl ></app-input>
     <span class="error" *ngIf="submitted && errorCtr.email.errors?.required">
       Email is required.
     </span>
     <span class="error" *ngIf="submitted && errorCtr.email.errors?.pattern">
       Enter valid email.
     </span>
-    <app-input label="Password" type="password" formControlName="password" [(ngModel)]="password" ngDefaultControl></app-input>
+    <app-input label="Password" type="password" formControlName="password"  ngDefaultControl></app-input>
     <span class="error" *ngIf="submitted && errorCtr.password.errors?.required">
       Password is required.
     </span>

@@ -77,9 +77,7 @@ export class LoginPage implements OnInit {
       console.log(this.myForm.value)
     }
   }
-  togglePasswordFieldType(){
-    this.isTextFieldType = !this.isTextFieldType;
-  }
+
   login(){
    let email=this.myForm.value.email;
   let  password=this.myForm.value.password;
