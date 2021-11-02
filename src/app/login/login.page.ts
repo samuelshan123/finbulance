@@ -13,8 +13,11 @@
 //   }
 
 // }
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms"
+import { LoginserviceService } from '../apiservice.service';
+
 
 @Component({
   selector: 'app-login',
@@ -24,7 +27,8 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms"
 export class LoginPage implements OnInit {
   myForm: FormGroup;
   submitted = false;
-  constructor(public formBuilder: FormBuilder) { }
+  constructor(public formBuilder: FormBuilder,public http:HttpClient,public apiservice:LoginserviceService ) { }
+  
 
 ngOnInit() {
     this.myForm = this.formBuilder.group({
@@ -38,11 +42,20 @@ ngOnInit() {
   }
   onSubmit() {
     this.submitted = true;
+    // console.log();
+    
+     
     if (!this.myForm.valid) {
       console.log('All fields are required.')
       return false;
     } else {
+      this.apiservice.login(this.myForm.value)
       console.log(this.myForm.value)
     }
   }
 }
+// ngOnInit() {
+//   this.myform.getUsers().subscribe(res => {
+
+//});
+// }
