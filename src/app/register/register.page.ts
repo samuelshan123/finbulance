@@ -12,13 +12,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RegisterPage implements OnInit {
 
+  textBoxDisabled = true;
 
   
   regForm: FormGroup;
   submitted = false;
 
-  
-  textBoxDisabled = true;
+  Service: any = ['Finance', 'Construction', 'Tennessee', 'Michigan']
 
 
   constructor(  
@@ -33,9 +33,7 @@ export class RegisterPage implements OnInit {
      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
      phone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
      type: ['', [Validators.required]],
-     servicename:['',[]],
-     orgname: ['', []],
-     pan:['',[]]
+   
   
    })
   }
@@ -45,10 +43,10 @@ check(e){
 
   console.log('checked :',e.target.value);
   let service = e.target.value;
-if (service=="service provider") {
+if (service =="service provider") {
 
   this.regForm.addControl("servicename", new FormControl('',Validators.required))
-  this.regForm.addControl("orgname", new FormControl('',Validators.required)),
+  this.regForm.addControl("orgname", new FormControl('',Validators.required))
   this.regForm.addControl("pan",new FormControl('',Validators.required))
 
   // this.regForm.get("servicename").setValidators([Validators.required]),
