@@ -12,14 +12,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RegisterPage implements OnInit {
 
-
-  
   regForm: FormGroup;
   submitted = false;
 
-  
   textBoxDisabled = true;
-
 
   constructor(  
     private router: Router,public formBuilder: FormBuilder,public toastCtrl:ToastController,
@@ -33,9 +29,9 @@ export class RegisterPage implements OnInit {
      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
      phone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
      type: ['', [Validators.required]],
-     servicename:['',[]],
-     orgname: ['', []],
-     pan:['',[]]
+    //  servicename:['',[]],
+    //  orgname: ['', []],
+    //  pan:['',[]]
   
    })
   }

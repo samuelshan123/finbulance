@@ -82,21 +82,23 @@ export class LoginPage implements OnInit {
    let email=this.myForm.value.email;
   let  password=this.myForm.value.password;
 
-    this.http.get(`${this.API}/?email=${email}&&password=${password}`)
+    this.http.get(this.API,this.myForm.value)
     // this.http.post(this.API,this.myForm.value)
     .subscribe((res)=>{
     if (res[0].type=="service provider") {
       console.log(res);
       console.log(res[0].type);
       this.openSucessToast();
-      localStorage.setItem("user",res[0].name);
+      localStorage.setItem("user", res[0].name);
+      localStorage.setItem("email", res[0].email);
       console.log(res[0].name);
       this.router.navigate(["/home"]);
 
     } else if (res[0].type=="service requester"){
       console.log(res);
       console.log(res[0].type);
-      localStorage.setItem("user",res[0].name);
+      localStorage.setItem("user", res[0].name);
+      localStorage.setItem("email",res[0].email);
       console.log(res[0].name);
       this.router.navigate(["/home"]);
     }
