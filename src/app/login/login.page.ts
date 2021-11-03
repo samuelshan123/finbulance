@@ -81,25 +81,29 @@ export class LoginPage implements OnInit {
 
     // this.http.get(`${this.API}/?email=${email}&&password=${password}`)
      this.http.post(this.API,this.myForm.value)
-    .subscribe((res)=>{
+    .subscribe((res:any)=>{
       console.log(res);
+      if(res.message=="success"){
+        let info = res.user[0];
 
-      if ( res[0] && res[0].type=="service provider") {
-        console.log(res[0].type)
-        this.openSucessToast();
-        localStorage.setItem("name",res[0].name);
-        localStorage.setItem("email",res[0].email);
-        this.openSucessToast();
-        this.router.navigate(["/home"]);
-  
-      } else if ( res[0] && res[0].type=="service requester"){
-        console.log(res[0].type);
-        localStorage.setItem("name",res[0].name);
-        localStorage.setItem("email",res[0].email);
-  
-        console.log(res[0].name);
-        this.router.navigate(["/home"]);
-      } else{
+        if (info.type=="service provider") {
+          console.log(info.type)
+          this.openSucessToast();
+          localStorage.setItem("name",info.name);
+          localStorage.setItem("email",info.email);
+          this.openSucessToast();
+          this.router.navigate(["/home"]);
+    
+        } else if (info.type=="service requester"){
+          localStorage.setItem("name",info.name);
+          localStorage.setItem("email",info.email);
+    
+          //console.log(res[0].name);
+          this.router.navigate(["/home"]);
+        } 
+      }
+
+    else{
           console.log("something went wrong");
           this.openFailToast(); 
 
