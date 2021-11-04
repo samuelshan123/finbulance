@@ -72,7 +72,7 @@ export class LoginPage implements OnInit {
       console.log('All fields are required.')
       return false;
     } else {
-      // this.openToast();
+      this.openToast();
       this.login();
       console.log(this.myForm.value)
     }
@@ -87,18 +87,17 @@ export class LoginPage implements OnInit {
         let info = res.user[0];
 
         if (info.type=="service provider") {
-          console.log(info.type)
-          this.openSucessToast();
           localStorage.setItem("name",info.name);
           localStorage.setItem("email",info.email);
           this.openSucessToast();
           this.router.navigate(["/home"]);
+
     
         } else if (info.type=="service requester"){
           localStorage.setItem("name",info.name);
           localStorage.setItem("email",info.email);
-    
           //console.log(res[0].name);
+          this.openSucessToast();
           this.router.navigate(["/home"]);
         } 
       }
@@ -108,15 +107,8 @@ export class LoginPage implements OnInit {
           this.openFailToast(); 
 
       }
-    }
-      
+    }    
     );
-
-
-
-
-
-
       }
     }
  
