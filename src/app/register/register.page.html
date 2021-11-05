@@ -51,9 +51,9 @@ Finbulance    </ion-title>
       <div>
 
         <div style="margin-top: 10px;">
-          <label   style="margin-left: 5px;" class="custom-control-label">
-            <input (change)='check($event)'  [(ngModel)]="type" type="radio" value="service requester"  name ="type" formControlName="type"
-            >
+          <label   style="margin-left: 5px;" >
+            <input (change)='check($event)'  
+            [(ngModel)]="type" type="radio" value="service requester"  name ="type" formControlName="type"/>
             Service Requester </label>
           
         <div style="margin-top: 5px;padding-bottom: 15px;">
@@ -77,8 +77,8 @@ Finbulance    </ion-title>
     <span class="error ion-padding" *ngIf="submitted && errorCtr.servicename.errors?.required">
       Service Type is required.
     </span> -->
-    <div class="mb-3">
-      <select class="custom-select"  formControlName="servicename">
+    <div class="mb-3" >
+      <select style="padding-left: 10px; border-radius: 8px;"  class="custom-select"  formControlName="servicename">
         <option value="">Choose your service</option>
         <option *ngFor="let service of Service" [ngValue]="service">{{service}}</option>
       </select>
