@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RouteConfigLoadStart, Router } from '@angular/router';
+import { PopoverController } from '@ionic/angular';
 
 @Component({
   selector: 'app-profile',
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class ProfilePage implements OnInit {
 name:string;
 email:string;
-  constructor() { }
+  constructor( private popoverController:PopoverController,private router:Router ) {  }
 
   
   ngOnInit() {
@@ -21,5 +23,11 @@ email:string;
 
   }
   
+}
+ logout() {
+  localStorage.clear();
+   this.popoverController.dismiss();
+  this.router.navigate(["/login"])
+        
 }
 }
