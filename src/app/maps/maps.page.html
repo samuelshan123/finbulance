@@ -1,23 +1,10 @@
+
+
+
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button ></ion-menu-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button (click)="notifications($event)">
-        <img style="width: 30px;"  src="assets/avatar.png"/>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>Home</ion-title>
+    <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="UpdateSearchResults()" placeholder="Search for a place"  (ionClear)="ClearAutocomplete()"></ion-searchbar>
   </ion-toolbar>
-</ion-header>
-
-
-
-
-  
-    <ion-searchbar  [(ngModel)]="autocomplete.input" (ionInput)="UpdateSearchResults()" placeholder="Search for a place"  (ionClear)="ClearAutocomplete()"></ion-searchbar>
-  
   <ion-list [hidden]="autocompleteItems.length == 0">
     <ion-item *ngFor="let item of autocompleteItems" tappable (click)="SelectSearchResult(item)">
       {{ item.description }}
@@ -34,6 +21,7 @@
         </ion-button>
     </ion-col>
   </ion-row>   -->
+</ion-header>
 
 <ion-content> 
   <ion-fab vertical="bottom" horizontal="start" slot="fixed">
@@ -48,5 +36,4 @@
     <div #map id="map"  style="height: 100%;"></div>
   </div>   
 </ion-content>
-
 

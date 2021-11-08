@@ -1,17 +1,4 @@
-ion-toolbar{
-    --background: linear-gradient(
-        90deg,
-        rgba(250, 87, 142, 1) 0%,
-        rgba(254, 171, 142, 1) 100%
-      );
-      color: white;
-  }
-  .img{
-      height: 30px;
-      width: 30px;
-  }
-
-  #map_canvas {
+#map_canvas {
     width: 90%;
     height: 80%;
     border: 1px solid red;
@@ -43,5 +30,15 @@ ion-toolbar{
       margin-top: -41px;
     }
   }
+  ion-toolbar{
+    --box-shadow: none;
+    --background: linear-gradient(
+      90deg,
+      rgba(250, 87, 142, 1) 0%,
+      rgba(254, 171, 142, 1) 100%
+    );
+    color: #fff;
 
+    
+  }
   
