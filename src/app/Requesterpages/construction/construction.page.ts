@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-construction',
@@ -8,16 +10,18 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class ConstructionPage implements OnInit {
 
-  registerForm: FormGroup;
+
+ id:any =localStorage.getItem("id");
+  constructionForm: FormGroup;
   submitted = false;
   Contract: any = ['Full Contract','Labour Contarct']
   Area: any = ['Town','Village']
 
-
-  constructor(private formBuilder: FormBuilder) { }
+  
+  constructor(private formBuilder: FormBuilder,private router:Router,private http:HttpClient) { }
 
   ngOnInit() {
-      this.registerForm = this.formBuilder.group({
+      this.constructionForm = this.formBuilder.group({
         sqrft: ['', Validators.required],
           budget: ['', Validators.required],
           months: ['', Validators.required],
@@ -31,15 +35,32 @@ export class ConstructionPage implements OnInit {
         
     }
 
-  get f() { return this.registerForm.controls; }
+  get f() { return this.constructionForm.controls; }
 
   onSubmit() {
       this.submitted = true;
 
-      if (this.registerForm.invalid) {
+      if (this.constructionForm.invalid) {
           return;
       }else{
-         console.log(this.registerForm.value);
+        console.log(this.id);
+        
+      let Post:any={
+          sqrft:this.constructionForm.value.sqrft,
+          budget:this.constructionForm.value.budget,
+          months:this.constructionForm.value.months,
+          contract:this.constructionForm.value.contract,
+          area:this.constructionForm.value.area,
+          notes:this.constructionForm.value.notes,
+          user_id:this.id
+
+        }
+      
+         console.log(this.constructionForm.value);
+         this.http.post("http://localhost:1337/constructions",Post).subscribe((res)=>{
+          console.log(res);
+          this.router.navigateByUrl('home')
+        })
 
       }
 

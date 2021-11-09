@@ -11,7 +11,7 @@ Construction    </ion-title>
       <div class="row">
           <div class="col-md-6 offset-md-3">
               <h3>Construction Form</h3>
-              <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+              <form [formGroup]="constructionForm" (ngSubmit)="onSubmit()">
                   <div class="form-group">
                       <label>Square Feet</label>
                       <input type="text" formControlName="sqrft" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sqrft.errors }" />

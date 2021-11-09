@@ -85,6 +85,8 @@ export class LoginPage implements OnInit {
       console.log(res);
       if(res.message=="success"){
         let info = res.user[0];
+        localStorage.setItem("id",info.id);
+
 
         if (info.type=="service provider") {
           localStorage.setItem("name",info.name);
