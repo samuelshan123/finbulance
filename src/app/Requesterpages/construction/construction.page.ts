@@ -15,11 +15,9 @@ export class ConstructionPage implements OnInit {
 
   ngOnInit() {
       this.registerForm = this.formBuilder.group({
-          firstName: ['', Validators.required],
-          lastName: ['', Validators.required],
-          email: ['', [Validators.required, Validators.email]],
-          password: ['', [Validators.required, Validators.minLength(6)]],
-          confirmPassword: ['', Validators.required]
+        sqft: ['', Validators.required],
+          budget: ['', Validators.required],
+          months: ['', Validators.required],
       });
         
     }
@@ -34,9 +32,11 @@ export class ConstructionPage implements OnInit {
       // stop here if form is invalid
       if (this.registerForm.invalid) {
           return;
+      }else{
+         console.log(this.registerForm.value);
+
       }
 
-      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
   }
 }
 
