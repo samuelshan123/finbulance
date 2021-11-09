@@ -10,6 +10,9 @@ export class ConstructionPage implements OnInit {
 
   registerForm: FormGroup;
   submitted = false;
+  Contract: any = ['Full Contract','Labour Contarct']
+  Area: any = ['Town','Village']
+
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -18,6 +21,12 @@ export class ConstructionPage implements OnInit {
         sqft: ['', Validators.required],
           budget: ['', Validators.required],
           months: ['', Validators.required],
+          contract: ['', Validators.required],
+          area: ['', Validators.required],
+          notes: ['', Validators.required]
+
+
+
       });
         
     }

@@ -15,6 +15,6 @@ export class AppComponent {
 
 
   initilizeApp(){
-      this.router.navigateByUrl('register')
+      this.router.navigateByUrl('home/construction')
   }
 }
