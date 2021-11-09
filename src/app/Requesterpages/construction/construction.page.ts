@@ -18,7 +18,7 @@ export class ConstructionPage implements OnInit {
 
   ngOnInit() {
       this.registerForm = this.formBuilder.group({
-        sqft: ['', Validators.required],
+        sqrft: ['', Validators.required],
           budget: ['', Validators.required],
           months: ['', Validators.required],
           contract: ['', Validators.required],
@@ -31,14 +31,11 @@ export class ConstructionPage implements OnInit {
         
     }
 
-  // convenience getter for easy access to form fields
-  // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
       this.submitted = true;
 
-      // stop here if form is invalid
       if (this.registerForm.invalid) {
           return;
       }else{

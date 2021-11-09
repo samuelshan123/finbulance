@@ -14,9 +14,9 @@ Construction    </ion-title>
               <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                   <div class="form-group">
                       <label>Square Feet</label>
-                      <input type="text" formControlName="sqft" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sqft.errors }" />
-                      <div *ngIf="submitted && f.sqft.errors" class="invalid-feedback">
-                          <div *ngIf="f.sqft.errors.required">Square Feet is required</div>
+                      <input type="text" formControlName="sqrft" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sqrft.errors }" />
+                      <div *ngIf="submitted && f.sqrft.errors" class="invalid-feedback">
+                          <div *ngIf="f.sqrft.errors.required">Square Feet is required</div>
                       </div>
                   </div>
                   <div class="form-group">
@@ -67,7 +67,7 @@ Construction    </ion-title>
                
                   <div class="form-group">
                     <label>Notes</label>
-                    <textarea type="text"  rows="3" formControlName="notes" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.notes.errors }" ></textarea>
+                    <textarea type="text"  rows="2" formControlName="notes" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.notes.errors }" ></textarea>
                     <div *ngIf="submitted && f.notes.errors" class="invalid-feedback">
                         <div *ngIf="f.notes.errors.required">Notes is required</div>
                     </div>
