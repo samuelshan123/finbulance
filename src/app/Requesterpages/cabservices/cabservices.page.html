@@ -1,9 +1,112 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>cabservices</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-header>  
+  <ion-toolbar>  
+    <ion-title style="margin-left: 10px;">  
+Cab Services    </ion-title>  
+  </ion-toolbar>  
+</ion-header>  
 
-<ion-content>
+<ion-content class="ion-padding">
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+              <h3>Book Your Cab</h3>
+              <form [formGroup]="cabForm" (ngSubmit)="onSubmit()">
+                
+                  <div class="form-group">
+                      <label>Pick-Up Location</label>
+                      <input type="text" formControlName="pickup" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pickup.errors }" />
+                      <div *ngIf="submitted && f.pickup.errors" class="invalid-feedback">
+                          <div *ngIf="f.pickup.errors.required">Pick-Up Location is required</div>
+                      </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Pickup Date and Time</label>
+                  <div class="datetimepicker">
+                    <input type="datetime-local" id="date"  formControlName="pickup_date"[ngClass]="{ 'is-invalid': submitted && f.pickup_date.errors }" />
+                    <div *ngIf="submitted && f.pickup_date.errors" class="invalid-feedback">
+                        <div *ngIf="f.pickup_date.errors.required">Pick-Up Date and Time is required</div>
+                    </div>
+                     <!-- <span></span>
+                    <input type="time" id="time"  formControlName="pickup_time"> -->
+                  </div>
+                  </div>
+                  
 
+                  <div class="form-group">
+                    <label>No of Person</label>
+                    <input type="text" formControlName="person" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.person.errors }" />
+                    <div *ngIf="submitted && f.person.errors?.required" class="invalid-feedback">
+                      No of Person is required</div>
+                        <div class="invalid-feedback" *ngIf="submitted && f.person.errors?.pattern">Number only Allowed</div>
+                </div>
+
+                <div class="form-group" >
+                    <label>Vehicle</label>
+
+                    <select style="padding-left: 10px; border-radius: 8px;"  class="custom-select"  formControlName="vehicle" 
+                    [ngClass]="{ 'is-invalid': submitted && f.vehicle.errors }">
+                      <option value="">Choose Vehicle </option>
+                      <option *ngFor="let vehicle of Vehicle" [ngValue]="vehicle">{{vehicle}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.vehicle.errors" class="invalid-feedback">
+                        <div *ngIf="f.vehicle.errors.required">Vehicle is required</div>
+                    </div>
+                  </div> 
+
+
+              <!-- trip Type -->
+    <div class="form-group">
+     <label>My Trip</label>
+      <div>
+        <div style="margin-top: 10px;">
+          <label   style="margin-left: 5px;" >
+            <input (change)='check($event)'  
+            [(ngModel)]="trip" type="radio" value="single trip"  name ="trip" formControlName="trip" />
+            Single Trip </label>
+          
+        <div style="margin-top: 5px;">
+        
+          <label style="margin-left: 5px;"  >
+            <input (change)='check($event)' [(ngModel)]="trip" type="radio"  value="round trip" name="trip" formControlName="trip"
+              >
+            Round Trip</label>
+        </div>   
+      </div>
+    </div>
+    </div>
+                  <div class="form-group">
+                    <label>Destination</label>
+                    <input type="text" formControlName="destination" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.destination.errors }" />
+                    <div *ngIf="submitted && f.destination.errors" class="invalid-feedback">
+                        <div *ngIf="f.destination.errors.required">Destination is required</div>
+                    </div>
+                </div>
+
+                <div  *ngIf="trip ==='round trip'" >
+                 
+                  <div class="form-group">
+                    <label>Return Date and Time</label>
+                  <div class="datetimepicker">
+                    <input type="datetime-local" id="date"  formControlName="return_date"[ngClass]="{ 'is-invalid': submitted && f.return_date.errors }" />
+                    <div *ngIf="submitted && f.return_date.errors" class="invalid-feedback">
+                        <div *ngIf="f.return_date.errors.required">Return Date and Time is required</div>
+                    </div>
+                     <!-- <span></span> 
+                    <input type="time" id="time"  formControlName="pickup_time"> -->
+                  </div>
+                  </div>
+                  
+                  </div>
+                 
+                 
+                  <div class="form-group">
+                    <button type="submit" class="button" >Submit</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
 </ion-content>

@@ -15,6 +15,6 @@ export class AppComponent {
 
 
   initilizeApp(){
-      this.router.navigateByUrl('login')
+      this.router.navigateByUrl('home/cabservices')
   }
 }
