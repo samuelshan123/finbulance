@@ -56,22 +56,22 @@ export class CabservicesPage implements OnInit {
       }else{
         console.log(this.id);
         
-      // let Post:any={
-      //     sqrft:this.cabForm.value.sqrft,
-      //     budget:this.cabForm.value.budget,
-      //     months:this.cabForm.value.months,
-      //     contract:this.cabForm.value.contract,
-      //     area:this.cabForm.value.area,
-      //     notes:this.cabForm.value.notes,
-      //     user_id:this.id
-
-      //   }
+      let Cab:any={
+         pickup:this.cabForm.value.pickup,
+         pickup_date:this.cabForm.value.pickup_date,
+         person:this.cabForm.value.person,
+         vehicle:this.cabForm.value.vehicle,
+         destination:this.cabForm.value.destination,
+         return_date:this.cabForm.value.return_date,
+         trip:this.cabForm.value.trip,
+         user_id:this.id,
+        }
       
          console.log(this.cabForm.value);
-        //  this.http.post("http://localhost:1337/constructions",Post).subscribe((res)=>{
-        //   console.log(res);
-        //   this.router.navigateByUrl('home')
-        // })
+         this.http.post("http://localhost:1337/cabservices",Cab).subscribe((res)=>{
+          console.log(res);
+          this.router.navigateByUrl('home')
+        })
 
       }
 

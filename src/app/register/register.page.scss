@@ -4,6 +4,8 @@
   }
   
   h1 {
+    font-family: Gilroy;
+
     margin-top: 10%;
     margin-bottom: 10px;
     font-size: 32px;
@@ -22,13 +24,15 @@
   }
   
   h3 {
+    font-family: Gilroy;
+
     color: #939fab;
     font-weight: 600;
   }
   
   form {
     margin-top: 3rem;
-  
+
     app-button {
       display: block;
       margin-top: 3rem;

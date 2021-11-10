@@ -34,8 +34,6 @@
     "@ionic-native/native-geocoder": "^5.36.0",
     "@ionic-native/status-bar": "^5.36.0",
     "@ionic/angular": "^5.5.2",
-    "@mat-datetimepicker/core": "^7.0.1",
-    "@mat-datetimepicker/moment": "^7.0.1",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "bootstrap": "^4.5.0",
     "ng-animate": "^1.0.0",
