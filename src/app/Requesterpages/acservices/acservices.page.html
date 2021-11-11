@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>AC Services</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+<!-- main app container -->
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+              <h3 style="font-family: Gilroy;">AC Service Form </h3>
+              <form [formGroup]="acForm" (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                      <label>Price Range</label>
+                      <input type="text" formControlName="price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.price.errors }" />
+                      <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                          <div *ngIf="f.price.errors.required">Price Range is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Capacity(tons or litre)</label>
+                    <input type="text" formControlName="capacity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.capacity.errors }" />
+                    <div *ngIf="submitted && f.capacity.errors" class="invalid-feedback">
+                        <div *ngIf="f.capacity.errors.required">Capacity is required</div>
+                    </div>
+                </div>
+                <div class="form-group" >
+                  <label>Type</label>
+
+                  <select style="padding-left: 10px; border-radius: 8px;"  class="custom-select"  formControlName="type" 
+                  [ngClass]="{ 'is-invalid': submitted && f.type.errors }">
+                    <option value="">Choose Type </option>
+                    <option *ngFor="let type of Type" [ngValue]="type">{{type}}</option>
+                  </select>
+                  <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
+                      <div *ngIf="f.type.errors.required">Type is required</div>
+                  </div>
+                </div> 
+
+                <div class="form-group">
+                  <label>Address</label>
+                  <textarea type="text"  rows="2" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" ></textarea>
+                  <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                      <div *ngIf="f.address.errors.required">Address is required</div>
+                  </div>
+              </div>
+
+                  <div class="form-group">
+                    <button type="submit" class="button" >Submit</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+</ion-content>
