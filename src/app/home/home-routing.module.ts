@@ -37,8 +37,8 @@ const routes: Routes = [
         loadChildren: () => import('../Requesterpages/cabservices/cabservices.module').then( m => m.CabservicesPageModule)
       },
       {
-        path: 'vehicle',
-        loadChildren: () => import('../Requesterpages/vehicle/vehicle.module').then( m => m.VehiclePageModule)
+        path: 'houseinteriors',
+        loadChildren: () => import('../Requesterpages/houseinteriors/houseinteriors.module').then( m => m.HouseinteriorsPageModule)
       },
     ]
   }
