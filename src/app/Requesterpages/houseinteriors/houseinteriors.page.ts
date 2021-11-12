@@ -21,7 +21,9 @@ export class HouseinteriorsPage implements OnInit {
           budget: ['', Validators.required],
           work: ['', Validators.required],
           time: ['', Validators.required],
-          address: ['', Validators.required]
+          address: ['', Validators.required],
+          feet: ['', Validators.required]
+
 
 
      
@@ -44,6 +46,7 @@ export class HouseinteriorsPage implements OnInit {
          budget:this.interiorForm.value.budget,
          time:this.interiorForm.value.time,
          address:this.interiorForm.value.address,
+         feet:this.interiorForm.value.feet,
          user_id:this.id
 
        }

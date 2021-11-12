@@ -29,6 +29,13 @@
                   </div> 
   
                   <div class="form-group">
+                    <label>Feet x Feet</label>
+                    <input type="text" formControlName="feet" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.feet.errors }" />
+                    <div *ngIf="submitted && f.feet.errors" class="invalid-feedback">
+                        <div *ngIf="f.feet.errors.required">Budget is required</div>
+                    </div>
+                </div>
+                  <div class="form-group">
                     <label>Budget</label>
                     <input type="text" formControlName="budget" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.budget.errors }" />
                     <div *ngIf="submitted && f.budget.errors" class="invalid-feedback">
