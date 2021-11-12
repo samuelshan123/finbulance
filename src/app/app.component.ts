@@ -15,6 +15,6 @@ export class AppComponent {
 
 
   initilizeApp(){
-      this.router.navigateByUrl('home/houseinteriors')
+      this.router.navigateByUrl('login')
   }
 }
