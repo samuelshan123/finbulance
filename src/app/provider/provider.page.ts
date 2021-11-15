@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProviderPage implements OnInit {
 
-  constructor() { }
+Data:any[];
+  service=localStorage.getItem("service");
+
+  constructor(private http:HttpClient) { 
+    console.log(this.service);
+    
+  }
 
   ngOnInit() {
+this.getDetails();
   }
+getDetails(){
+  this.http.get("http://localhost:1337/constructions").subscribe((res:any)=>{
+          this.Data=res;
+          console.log(this.Data);
+
+      
+      })
+}
 
 }

@@ -1,20 +1,27 @@
 
-
-
-<article class="leaderboard">
   <ion-header>  
     <ion-toolbar>  
       <ion-title style="margin-left: 10px;">  
   Finbulance    </ion-title>  
     </ion-toolbar>  
   </ion-header>  
+
+  <ion-content>
+<article class="leaderboard">
+
   
-  <main class="leaderboard__profiles">
-    <article class="leaderboard__profile">
+  <div  *ngIf="service ==='Finance'" >
+        
+
+    
+  <main class="leaderboard__profiles" *ngFor="let data of Data">
+    <article class="leaderboard__profile" >
       <img src="assets/icon/service.png" alt="pic" class="leaderboard__picture">
-      <span class="leaderboard__name">samuel</span>
-      <span class="leaderboard__value">14-7-2021</span>
-    </article>
-   
+      <span class="leaderboard__name">{{data.user_id.name}}</span>
+      <span class="leaderboard__value">{{data.created_at}}</span>
+    </article>  
 </main>
+</div>
+
 </article>
+</ion-content>
