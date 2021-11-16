@@ -40,7 +40,11 @@ const routes: Routes = [
   {
     path: 'acservices',
     loadChildren: () => import('./Requesterpages/acservices/acservices.module').then( m => m.AcservicesPageModule)
+  },  {
+    path: 'userdetails',
+    loadChildren: () => import('./userdetails/userdetails.module').then( m => m.UserdetailsPageModule)
   },
+
 
 
 
