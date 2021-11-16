@@ -25,6 +25,8 @@ email:string;
   
 }
  logout() {
+   console.log("logged out");
+   
   localStorage.clear();
    this.popoverController.dismiss();
   this.router.navigate(["/login"])

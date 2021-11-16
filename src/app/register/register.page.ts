@@ -18,8 +18,7 @@ export class RegisterPage implements OnInit {
   regForm: FormGroup;
   submitted = false;
 
-  Service: any = ['Finance', 'Construction', 'Medicine', 'Vehicle','Cab Services','AC Service']
-
+  Service: any = ['Finance','Construction','Cab Services','AC Service','Interiors']
 
   constructor(  
     private router: Router,public formBuilder: FormBuilder,public toastCtrl:ToastController,

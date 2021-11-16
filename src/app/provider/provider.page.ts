@@ -20,12 +20,39 @@ Data:any[];
 this.getDetails();
   }
 getDetails(){
-  this.http.get("http://localhost:1337/constructions").subscribe((res:any)=>{
-          this.Data=res;
-          console.log(this.Data);
+          
+          if(this.service ==="Construction" ){
+            this.http.get("http://localhost:1337/constructions").subscribe((res:any)=>{
+            this.Data=res;
+            console.log(this.Data); 
+          })
+          }
+           
+          else if(this.service ==="AC Service" ){
+            this.http.get("http://localhost:1337/acservices").subscribe((res:any)=>{
+              this.Data=res;
+              console.log(this.Data); 
+            }) 
+          }
+          else if(this.service ==="Cab Services" ){
+            this.http.get("http://localhost:1337/cabservices").subscribe((res:any)=>{
+              this.Data=res;
+              console.log(this.Data); 
+            }) 
+          }
+          else if(this.service ==="Interiors" ){
+            this.http.get("http://localhost:1337/interiors").subscribe((res:any)=>{
+              this.Data=res;
+              console.log(this.Data); 
+            }) 
+          }
+          else{
+                console.log("No Data Available");
+                
+          }
 
       
-      })
+     
 }
 
 }
