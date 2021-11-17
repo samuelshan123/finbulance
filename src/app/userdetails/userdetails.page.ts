@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-userdetails',
@@ -7,16 +9,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserdetailsPage implements OnInit {
 
-  name = 'Dynamic Add Fields';
-  values = [];
+  detForm: FormGroup;
+  submitted = false;
+   cab:any =JSON.parse(localStorage.getItem("cab"))
+
+    Data:any[] =[this.cab.user_id.name,this.cab.user_id.email,this.cab.destination]
+
+
+  constructor(private formBuilder: FormBuilder){
+
+  }
   ngOnInit() {
-  }
+    this.detForm = this.formBuilder.group({
+      desc: ['', Validators.required]
+  });
+  
+}
 
-  removevalue(i){
-    this.values.splice(i,1);
-  }
+// convenience getter for easy access to form fields
+get f() { return this.detForm.controls; }
 
-  // addvalue(){
-  //   this.values.push({value: ""});
-  // }
+onSubmit() {
+  this.submitted = true;
+
+  // stop here if form is invalid
+  if (this.detForm.invalid) {
+      return;
+  }else{
+   
+    console.log(this.detForm.value);
+    
+
+    }
+
+}
 }

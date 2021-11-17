@@ -15,6 +15,6 @@ export class AppComponent {
 
          
   initilizeApp(){
-      this.router.navigateByUrl('userdetails')
+      this.router.navigateByUrl('login')
   }
 }
