@@ -87,14 +87,14 @@ export class LoginPage implements OnInit {
         let info = res.user[0];
         localStorage.setItem("id",info.id);
         localStorage.setItem("service",info.servicename);
-
-
-
+        localStorage.setItem("type",info.type);
+        
+        
         if (info.type=="service provider") {
           localStorage.setItem("name",info.name);
           localStorage.setItem("email",info.email);
           this.openSucessToast();
-          this.router.navigate(["/provider"]);
+          this.router.navigate(["/home"]);
 
     
         } else if (info.type=="service requester"){

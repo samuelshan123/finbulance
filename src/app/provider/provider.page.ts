@@ -20,12 +20,12 @@ Data:any[];
 
   getData(id:any){
     console.log(id);
+    
 
-     this.http.get("http://localhost:1337/cabservices/"+id).subscribe((res)=>{
-       console.log(res);
-         
-       localStorage.setItem("cab",JSON.stringify(res))
-     })
+    //  this.http.get("http://localhost:1337/cabservices/"+id).subscribe((res)=>{
+    //    console.log(res);
+    //    localStorage.setItem("cab",JSON.stringify(res))
+    //  })
   
     
 
