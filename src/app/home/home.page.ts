@@ -17,8 +17,8 @@ export class HomePage {
         { title: 'Construction', url: '/home/construction', icon: 'construct' },
         { title: 'Finance', url: '/home/finance', icon: 'logo-usd' },
         { title: 'Medical Emergency', url: '/home/medical', icon: 'medkit' },
-        { title: 'Home Appliances', url: '/home/homeappliances', icon: 'home' },
-        { title: 'Vehicle', url: '/home/vehicle', icon: 'build' },
+        { title: 'AC Service', url: '/home/acservices', icon: 'snow' },
+        { title: 'House Interiors', url: '/home/houseinteriors', icon: 'home' },
         { title: 'Cab Services', url: '/home/cabservices', icon: 'car' }
       ]
     },

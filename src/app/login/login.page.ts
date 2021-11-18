@@ -14,7 +14,7 @@ export class LoginPage implements OnInit {
 
   myForm: FormGroup;
   submitted = false;
-  API ="http://localhost:1337/fb-users";
+  API ="http://localhost:1337/login";
 
   email:string;
   password:string;
@@ -51,7 +51,7 @@ export class LoginPage implements OnInit {
   }  
   async openFailToast() {  
     const toast = await this.toastCtrl.create({  
-      message: 'Login Failed!!!',
+      message: 'Invalid User Data!!!',
             duration: 2000  
 
     });  
@@ -65,6 +65,7 @@ export class LoginPage implements OnInit {
     return this.myForm.controls;
   }
 
+  
   onSubmit() {
     this.submitted = true;
     if (!this.myForm.valid) {
@@ -76,41 +77,42 @@ export class LoginPage implements OnInit {
       console.log(this.myForm.value)
     }
   }
-
   login(){
-   let email=this.myForm.value.email;
-  let  password=this.myForm.value.password;
 
-    this.http.get(`${this.API}/?email=${email}&&password=${password}`)
-    // this.http.post(this.API,this.myForm.value)
-    .subscribe((res)=>{
+    // this.http.get(`${this.API}/?email=${email}&&password=${password}`)
+     this.http.post(this.API,this.myForm.value)
+    .subscribe((res:any)=>{
       console.log(res);
+      if(res.message=="success"){
+        let info = res.user[0];
+        localStorage.setItem("id",info.id);
+        localStorage.setItem("service",info.servicename);
 
-    if (res[0].type=="service provider") {
-      console.log(res);
-      console.log(res[0].type);
-      this.openSucessToast();
-      localStorage.setItem("name",res[0].name);
-      localStorage.setItem("email",res[0].email);
-      this.openSucessToast();
-      this.router.navigate(["/home"]);
 
-    } else if (res[0].type=="service requester"){
-      console.log(res);
-      console.log(res[0].type);
-      localStorage.setItem("name",res[0].name);
-      localStorage.setItem("email",res[0].email);
 
-      console.log(res[0].name);
-      this.router.navigate(["/home"]);
-    }
+        if (info.type=="service provider") {
+          localStorage.setItem("name",info.name);
+          localStorage.setItem("email",info.email);
+          this.openSucessToast();
+          this.router.navigate(["/provider"]);
+
+    
+        } else if (info.type=="service requester"){
+          localStorage.setItem("name",info.name);
+          localStorage.setItem("email",info.email);
+          //console.log(res[0].name);
+          this.openSucessToast();
+          this.router.navigate(["/home"]);
+        } 
+      }
+
     else{
-      console.log("something went wrong");
-      this.openFailToast();
-      
-    }
-      
-    });
+          console.log("something went wrong");
+          this.openFailToast(); 
+
+      }
+    }    
+    );
       }
     }
  

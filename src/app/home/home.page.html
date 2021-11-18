@@ -1,4 +1,5 @@
 
+
 <ion-menu contentId="content">
       <ion-header>
         <ion-toolbar>
@@ -9,7 +10,7 @@
         </ion-toolbar>
       </ion-header>
       
-      <ion-content>
+      <ion-content >
           <div *ngFor="let p of Pages">
             <ion-menu-toggle *ngIf="p.url">
               <ion-item routerDirection="root" [routerLink]="[p.url]" routerLinkActivate="active">

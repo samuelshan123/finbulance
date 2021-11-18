@@ -17,6 +17,10 @@ const routes: Routes = [
         loadChildren: () => import('../Requesterpages/construction/construction.module').then( m => m.ConstructionPageModule)
       },
       {
+        path: 'acservices',
+        loadChildren: () => import('../Requesterpages/acservices/acservices.module').then( m => m.AcservicesPageModule)
+      },
+      {
         path: 'finance',
         loadChildren: () => import('../Requesterpages/finance/finance.module').then( m => m.FinancePageModule)
       },
@@ -33,12 +37,8 @@ const routes: Routes = [
         loadChildren: () => import('../Requesterpages/cabservices/cabservices.module').then( m => m.CabservicesPageModule)
       },
       {
-        path: 'homeappliances',
-        loadChildren: () => import('../Requesterpages/homeappliances/homeappliances.module').then( m => m.HomeappliancesPageModule)
-      },
-      {
-        path: 'vehicle',
-        loadChildren: () => import('../Requesterpages/vehicle/vehicle.module').then( m => m.VehiclePageModule)
+        path: 'houseinteriors',
+        loadChildren: () => import('../Requesterpages/houseinteriors/houseinteriors.module').then( m => m.HouseinteriorsPageModule)
       },
     ]
   }

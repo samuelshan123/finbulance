@@ -4,18 +4,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CabservicesPageRoutingModule } from './cabservices-routing.module';
+import { UserdetailsPageRoutingModule } from './userdetails-routing.module';
 
-import { CabservicesPage } from './cabservices.page';
+import { UserdetailsPage } from './userdetails.page';
 
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule,
     FormsModule,
     IonicModule,
-    CabservicesPageRoutingModule
+    ReactiveFormsModule,
+    UserdetailsPageRoutingModule
   ],
-  declarations: [CabservicesPage]
+  declarations: [UserdetailsPage]
 })
-export class CabservicesPageModule {}
+export class UserdetailsPageModule {}

@@ -1,19 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfilePage } from '../profile/profile.page';
-import { PopoverController } from '@ionic/angular';
 import {  ViewChild, ElementRef, NgZone } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { Platform } from '@ionic/angular';
 
 declare var google;
-
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.page.html',
-  styleUrls: ['./main.page.scss'],
+  selector: 'app-maps',
+  templateUrl: './maps.page.html',
+  styleUrls: ['./maps.page.scss'],
 })
-export class MainPage implements OnInit {
+export class MapsPage implements OnInit {
   navigate: any;
   @ViewChild('map',  {static: false}) mapElement: ElementRef;
   map: any;
@@ -27,16 +24,18 @@ export class MainPage implements OnInit {
   GoogleAutocomplete: any;
 
  
-  constructor(public popoverCtrl: PopoverController,  private geolocation: Geolocation,
+  constructor(
+    private geolocation: Geolocation,
     private platform: Platform,  
 
     private nativeGeocoder: NativeGeocoder,    
-    public zone: NgZone,) { 
-      this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
-      this.autocomplete = { input: '' };
-      this.autocompleteItems = [];
-      this.initializeApp();
-  
+    public zone: NgZone,
+  ) {
+    this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
+    this.autocomplete = { input: '' };
+    this.autocompleteItems = [];
+    this.initializeApp();
+
   }
   initializeApp() {  
     this.platform.ready().then(() => {  
@@ -144,14 +143,5 @@ export class MainPage implements OnInit {
   GoTo(){
     return window.location.href = 'https://www.google.com/maps/search/?api=1&query=Google&query_place_id='+this.placeid;
   }
-
-
   
-  async notifications(ev: any) {  
-    const popover = await this.popoverCtrl.create({  
-        component: ProfilePage,  
-      event: ev, 
-    });  
-    return await popover.present();  
-  }  
 }
