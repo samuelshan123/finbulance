@@ -14,8 +14,9 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MapComponent } from './map/map.component';
 @NgModule({
-  declarations: [AppComponent,ProfilePage],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule,
     

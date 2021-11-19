@@ -108,7 +108,7 @@ if (service =="service provider") {
       this.openToast();
       this.http.post("http://localhost:1337/fb-users",this.regForm.value).subscribe((res)=>{
         console.log(res);
-        this.openSucessToast();
+        this.openSucessToast(); 
         this.router.navigateByUrl('login')
       })
       console.log(this.regForm.value)     

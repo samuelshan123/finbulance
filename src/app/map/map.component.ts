@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { Platform, PopoverController } from '@ionic/angular';
 import {  ViewChild, ElementRef, NgZone } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
-import { Platform } from '@ionic/angular';
-
 declare var google;
+
 @Component({
-  selector: 'app-maps',
-  templateUrl: './maps.page.html',
-  styleUrls: ['./maps.page.scss'],
+  selector: 'app-map',
+  templateUrl: './map.component.html',
+  styleUrls: ['./map.component.scss'],
 })
-export class MapsPage implements OnInit {
+export class MapComponent implements OnInit {
+
   navigate: any;
   @ViewChild('map',  {static: false}) mapElement: ElementRef;
   map: any;
@@ -24,18 +25,16 @@ export class MapsPage implements OnInit {
   GoogleAutocomplete: any;
 
  
-  constructor(
-    private geolocation: Geolocation,
+  constructor(public popoverCtrl: PopoverController,  private geolocation: Geolocation,
     private platform: Platform,  
 
     private nativeGeocoder: NativeGeocoder,    
-    public zone: NgZone,
-  ) {
-    this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
-    this.autocomplete = { input: '' };
-    this.autocompleteItems = [];
-    this.initializeApp();
-
+    public zone: NgZone,) { 
+      this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
+      this.autocomplete = { input: '' };
+      this.autocompleteItems = [];
+      this.initializeApp();
+  
   }
   initializeApp() {  
     this.platform.ready().then(() => {  
@@ -143,5 +142,8 @@ export class MapsPage implements OnInit {
   GoTo(){
     return window.location.href = 'https://www.google.com/maps/search/?api=1&query=Google&query_place_id='+this.placeid;
   }
+
+
   
+ 
 }

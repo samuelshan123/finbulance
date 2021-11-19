@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-provider',
-  templateUrl: './provider.page.html',
-  styleUrls: ['./provider.page.scss'],
+  selector: 'app-viewdetails',
+  templateUrl: './viewdetails.component.html',
+  styleUrls: ['./viewdetails.component.scss'],
 })
-export class ProviderPage implements OnInit {
+export class ViewdetailsComponent implements OnInit {
 
-Data:any[];
+  Data:any[];
   service=localStorage.getItem("service");
 
   constructor(private http:HttpClient) { 
@@ -22,10 +22,10 @@ Data:any[];
     console.log(id);
     
 
-    //  this.http.get("http://localhost:1337/cabservices/"+id).subscribe((res)=>{
-    //    console.log(res);
-    //    localStorage.setItem("cab",JSON.stringify(res))
-    //  })
+     this.http.get("http://localhost:1337/cabservices/"+id).subscribe((res)=>{
+       console.log(res);
+       localStorage.setItem("cab",JSON.stringify(res))
+     })
   
     
 
