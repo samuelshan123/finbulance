@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NavController, ToastController } from '@ionic/angular';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -14,12 +15,11 @@ export class LoginPage implements OnInit {
 
   myForm: FormGroup;
   submitted = false;
-  API ="http://localhost:1337/login";
 
   email:string;
   password:string;
 
-  constructor(private http:HttpClient,public formBuilder: FormBuilder,public router:Router,public toastCtrl: ToastController,public navCtrl: NavController) { }
+  constructor(private api:ApiService,private http:HttpClient,public formBuilder: FormBuilder,public router:Router,public toastCtrl: ToastController,public navCtrl: NavController) { }
 
   ngOnInit() {
     this.myForm = this.formBuilder.group({
@@ -78,9 +78,7 @@ export class LoginPage implements OnInit {
     }
   }
   login(){
-
-    // this.http.get(`${this.API}/?email=${email}&&password=${password}`)
-     this.http.post(this.API,this.myForm.value)
+    this.api.login(this.myForm.value)
     .subscribe((res:any)=>{
       console.log(res);
       if(res.message=="success"){

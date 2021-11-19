@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
+import { ApiService } from '../services/api.service';
 
 
 @Component({
@@ -12,15 +13,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RegisterPage implements OnInit {
 
-  textBoxDisabled = true;
-
-  
   regForm: FormGroup;
   submitted = false;
 
   Service: any = ['Finance','Construction','Cab Services','AC Service','Interiors']
 
-  constructor(  
+  constructor(  private api:ApiService,
     private router: Router,public formBuilder: FormBuilder,public toastCtrl:ToastController,
    private http:HttpClient ) {
      }
@@ -47,10 +45,6 @@ if (service =="service provider") {
   this.regForm.addControl("servicename", new FormControl('',Validators.required))
   this.regForm.addControl("orgname", new FormControl('',Validators.required))
   this.regForm.addControl("pan",new FormControl('',Validators.required))
-
-  // this.regForm.get("servicename").setValidators([Validators.required]),
-  // this.regForm.get("orgname").setValidators([Validators.required]),
-  // this.regForm.get("pan").setValidators([Validators.required])
 
 } else {
   this.regForm.removeControl("servicename")
@@ -106,7 +100,7 @@ if (service =="service provider") {
       return false;
     } else {
       this.openToast();
-      this.http.post("http://localhost:1337/fb-users",this.regForm.value).subscribe((res)=>{
+      this.api.register(this.regForm.value).subscribe((res)=>{
         console.log(res);
         this.openSucessToast(); 
         this.router.navigateByUrl('login')

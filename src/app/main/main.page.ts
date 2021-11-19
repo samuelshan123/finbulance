@@ -13,6 +13,8 @@ declare var google;
 })
 export class MainPage implements OnInit {
 
+  type:any = localStorage.getItem("type");
+
 
   navigate: any;
   @ViewChild('map',  {static: false}) mapElement: ElementRef;
