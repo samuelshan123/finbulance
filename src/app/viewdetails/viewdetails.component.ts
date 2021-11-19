@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { Subject } from 'rxjs';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./viewdetails.component.scss'],
 })
 export class ViewdetailsComponent implements OnInit {
+
 
   Data:any[];
   service=localStorage.getItem("service");
@@ -21,24 +23,20 @@ export class ViewdetailsComponent implements OnInit {
 
   getData(id){
     console.log(id);
-    //  this.http.get("http://localhost:1337/cabservices/"+id).subscribe((res)=>{
-    //    console.log(res);
+     this.http.get("http://localhost:1337/constructions/"+id).subscribe((res)=>{
+       console.log(res);
 
-    //    localStorage.setItem("cab",JSON.stringify(res))
-    //  })
-  
-    
-
+       localStorage.setItem("cab",JSON.stringify(res))
+     })
   }
   ngOnInit() {
     if(this.service ==="Construction" ){
       var servicename="constructions";
       this.api.getRequests(servicename).subscribe((res:any)=>{
         this.Data=res;
+
         console.log(this.Data); 
       })
-      
-
     }
      
     else if(this.service ==="AC Service" ){

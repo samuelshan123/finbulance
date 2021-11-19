@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { ViewdetailsComponent } from '../viewdetails/viewdetails.component';
 
 
 @Component({
@@ -11,12 +13,14 @@ export class UserdetailsPage implements OnInit {
 
   detForm: FormGroup;
   submitted = false;
-   cab:any =JSON.parse(localStorage.getItem("cab"))
+  cab:any =JSON.parse(localStorage.getItem("cab"))
 
-    Data:any[] =[this.cab.user_id.name,this.cab.user_id.email,this.cab.destination]
+     Data:any[] =[this.cab.user_id.name,this.cab.user_id.email,this.cab.destination]
 
+   
 
   constructor(private formBuilder: FormBuilder){
+
 
   }
   ngOnInit() {
