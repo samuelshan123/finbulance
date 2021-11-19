@@ -13,7 +13,7 @@
   
 <div> 
   <main class="leaderboard__profiles" *ngFor="let data of Data">
-    <article class="leaderboard__profile" (click)="getData(data.id)"routerLink="/userdetails" >
+    <article class="leaderboard__profile" (click)="getData(data)">
       <img src="assets/icon/service.png" alt="pic" class="leaderboard__picture">
       <span class="leaderboard__name">{{data.user_id.name}}</span>
       <span class="leaderboard__value">{{data.created_at}}</span>

@@ -8,6 +8,8 @@ import { Subject } from 'rxjs';
 export class ApiService {
   
 
+  sharedData:any;
+
   constructor(private http:HttpClient) {
    }
 

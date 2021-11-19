@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>userdetails</ion-title>
+    <ion-title>User Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -27,10 +27,12 @@
       <div class="container">
           <div class="row">
               <div class="col-md-6 offset-md-3">
-                  <h3 style="font-family: Gilroy;">User Details </h3>
+                  <!-- <h3 style="font-family: Gilroy;">User Details </h3> -->
                   <form [formGroup]="detForm" (ngSubmit)="onSubmit()">
-                    <div class="form-group" *ngFor="let data of Data">
-                      <label>{{data}}</label>
+                    <div class="form-group" *ngFor="let details of Details">
+                     
+                          <label>{{details}}</label>
+                       
                    </div>
 
                       <div class="form-group">

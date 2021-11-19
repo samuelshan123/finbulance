@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { ApiService } from '../services/api.service';
 import { ViewdetailsComponent } from '../viewdetails/viewdetails.component';
 
 
@@ -13,14 +14,38 @@ export class UserdetailsPage implements OnInit {
 
   detForm: FormGroup;
   submitted = false;
-  cab:any =JSON.parse(localStorage.getItem("cab"))
+  // cab:any =JSON.parse(localStorage.getItem("cab"))
+  data:any=this.api.sharedData;
 
-     Data:any[] =[this.cab.user_id.name,this.cab.user_id.email,this.cab.destination]
+     Details:any[] =['Name : '+this.data.user_id.name,
+     'E-mail : '+this.data.user_id.email,
+     'Pick-up Place : '+this.data.pickup,
+     'Pick-up Date & time : '+this.data.pickup_date,
+     'No of Persons : '+this.data.person,
+     'Vehicle : '+this.data.vehicle,
+     'Destination : '+this.data.destination,
+    "Trip type : "+this.data.trip,
+  "Return Date : "+this.data.return_date]
+    //  Fields:any[];
+    //  Values:any;
 
+    //  User:any={
+    //   name:this.data.user_id.name,
+    //   email:this.data.user_id.email,
+    //   destination:this.data.destination
+
+    //  }
+
+    
    
 
-  constructor(private formBuilder: FormBuilder){
-
+  constructor(private formBuilder: FormBuilder,private api:ApiService){
+    // for(const key in this.User) {
+    // console.log(`${key} : ${this.User[key]}`);
+          
+    //}
+      
+    
 
   }
   ngOnInit() {
@@ -29,6 +54,7 @@ export class UserdetailsPage implements OnInit {
   });
   
 }
+
 
 // convenience getter for easy access to form fields
 get f() { return this.detForm.controls; }
