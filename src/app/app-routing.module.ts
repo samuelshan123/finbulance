@@ -28,15 +28,6 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   },
-
-  {
-    path: 'provider',
-    loadChildren: () => import('./provider/provider.module').then( m => m.ProviderPageModule)
-  },
-  {
-    path: 'maps',
-    loadChildren: () => import('./maps/maps.module').then( m => m.MapsPageModule)
-  },
   {
     path: 'acservices',
     loadChildren: () => import('./Requesterpages/acservices/acservices.module').then( m => m.AcservicesPageModule)
