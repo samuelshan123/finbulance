@@ -18,7 +18,6 @@ Pages:any=[];
       children: [
         { title: 'Construction', url: '/home/construction', icon: 'construct' },
         { title: 'Finance', url: '/home/finance', icon: 'logo-usd' },
-        { title: 'Medical Emergency', url: '/home/medical', icon: 'medkit' },
         { title: 'AC Service', url: '/home/acservices', icon: 'snow' },
         { title: 'House Interiors', url: '/home/houseinteriors', icon: 'home' },
         { title: 'Cab Services', url: '/home/cabservices', icon: 'car' }

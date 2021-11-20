@@ -80,6 +80,7 @@ this.Details =construction
   "Budget : "+this.data.budget,
 "Time : "+this.data.time,
 "Address : "+this.data.address]
+this.Details =interiors
 
   }
 }
