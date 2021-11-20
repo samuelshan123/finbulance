@@ -1,13 +1,56 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-    <ion-title>Finance</ion-title>
-  </ion-toolbar>
-</ion-header>
+ <ion-header>  
+  <ion-toolbar>  
+    <ion-title style="margin-left:10px;">  
+Finance Services    </ion-title>  
+  </ion-toolbar>   
+</ion-header>  
 
-<ion-content>
+<ion-content class="ion-padding">
+  <!-- main app container -->
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+              
+              <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                      <label>Amount</label>
+                      <input type="text" formControlName="Amount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Amount.errors }" />
+                      <div *ngIf="submitted && f.Amount.errors" class="invalid-feedback">
+                          <div *ngIf="f.Amount.errors.required">Amount is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Intrest</label>
+                    <input type="text" formControlName="Intrest" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Intrest.errors }" />
+                    <div *ngIf="submitted && f.Intrest.errors" class="invalid-feedback">
+                        <div *ngIf="f.Intrest.errors.required">Intrest is required</div>
+                    </div>
+                </div>
+                 
+                <div class="form-group">
+                    <label>TimePeriod(Year)</label>
+                    <input type="text" formControlName="TimePeriod" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.TimePeriod.errors }" />
+                    <div *ngIf="submitted && f.TimePeriod.errors" class="invalid-feedback">
+                        <div *ngIf="f.TimePeriod.errors.required">TimePeriod is required</div>
+                    </div>
+                </div>
+                 
+                 
+                  <div class="form-group">
+                      <button class="btn btn-primary">Submit</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
 
-</ion-content>
+
+  </ion-content>
+  
+
+
+
+
+  

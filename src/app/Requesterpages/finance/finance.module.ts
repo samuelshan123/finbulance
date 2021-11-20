@@ -1,20 +1,44 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+
 
 import { IonicModule } from '@ionic/angular';
 
 import { FinancePageRoutingModule } from './finance-routing.module';
+ import { FinancePage } from './finance.page';
 
-import { FinancePage } from './finance.page';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   imports: [
+
     CommonModule,
-    FormsModule,
+      FormsModule,
     IonicModule,
-    FinancePageRoutingModule
+    FinancePageRoutingModule,
+    ReactiveFormsModule
+ 
+
   ],
-  declarations: [FinancePage]
+  declarations:  [FinancePage]
 })
 export class FinancePageModule {}
+
+
+
+// import { Component, OnInit } from '@angular/core';
+
+// @Component({
+//   selector: 'app-finance',
+//   templateUrl: './finance.page.html',
+//   styleUrls: ['./finance.page.scss'],
+// })
+// export class FinancePage implements OnInit {
+
+//   constructor() { }
+
+//   ngOnInit() {
+//   }
+
+// }

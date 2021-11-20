@@ -14,7 +14,7 @@ export class LoginPage implements OnInit {
 
   myForm: FormGroup;
   submitted = false;
-  API ="http://localhost:1337/fb-users";
+  API ="http://localhost:1337/fb-users/userlogin";
 
   email:string;
   password:string;
@@ -77,39 +77,47 @@ export class LoginPage implements OnInit {
     }
   }
 
-  login(){
-   let email=this.myForm.value.email;
-  let  password=this.myForm.value.password;
+  login() {
+    console.log("working fine")
+  
 
-    this.http.get(`${this.API}/?email=${email}&&password=${password}`)
-    // this.http.post(this.API,this.myForm.value)
-    .subscribe((res)=>{
-      console.log(res);
+   // this.http.get(this.API,this.myForm.value)
+     this.http.post(this.API,this.myForm.value)
+    .subscribe((res:any)=>{
+      console.log(res)
+   if(res.message=="success")  {
+    let info = res.user[0];
 
-    if (res[0].type=="service provider") {
+    localStorage.setItem("id",info.id);
+
+         localStorage.setItem("servicename",info.servicename);
+    
+
+    if (info.type=="service provider") {
+      
       console.log(res);
-      console.log(res[0].type);
+      console.log(info.type);
       this.openSucessToast();
-      localStorage.setItem("name",res[0].name);
-      localStorage.setItem("email",res[0].email);
+      localStorage.setItem("name",info.name);
+      localStorage.setItem("email",info.email);
       this.openSucessToast();
-      this.router.navigate(["/home"]);
+      this.router.navigate(["/serviceprovider"]);
 
-    } else if (res[0].type=="service requester"){
+    } else if (info.type=="service requester"){
       console.log(res);
-      console.log(res[0].type);
-      localStorage.setItem("name",res[0].name);
-      localStorage.setItem("email",res[0].email);
+       console.log(info.type);
+      localStorage.setItem("name",info.name);
+      localStorage.setItem("email",info.email);
 
-      console.log(res[0].name);
-      this.router.navigate(["/home"]);
+      console.log(info.name);
+      this.router.navigate(["/home/finance"]);
     }
     else{
       console.log("something went wrong");
       this.openFailToast();
       
     }
-      
+  }
     });
       }
     }

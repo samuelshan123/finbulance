@@ -9,4 +9,16 @@
 
 <ion-content>
 
+
+
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<!-- <div class="form-group">
+  <label>Amount</label>
+  <input type="text" formControlName="Amount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Amount.errors }" />
+  <div *ngIf="submitted && f.Amount.errors" class="invalid-feedback">
+      <div *ngIf="f.Amount.errors.required">Amount is required</div>
+  </div>
+</div> -->
+</form>
 </ion-content>
