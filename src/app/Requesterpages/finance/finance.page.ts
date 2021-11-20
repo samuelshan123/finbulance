@@ -38,8 +38,8 @@ export class FinancePage implements OnInit {
         amount:this.financeForm.value.amount,
         intrest:this.financeForm.value.intrest,
         time:this.financeForm.value.time,
-        user_id:this.id
-
+        user_id:this.id,
+        staus:"open"
       }
 
           console.log(this.financeForm.value);

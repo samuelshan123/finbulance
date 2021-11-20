@@ -48,8 +48,8 @@ export class HouseinteriorsPage implements OnInit {
          time:this.interiorForm.value.time,
          address:this.interiorForm.value.address,
          feet:this.interiorForm.value.feet,
-         user_id:this.id
-
+         user_id:this.id,
+         staus:"open"
        }
 
            console.log(this.interiorForm.value);
