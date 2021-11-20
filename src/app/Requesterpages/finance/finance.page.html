@@ -1,13 +1,56 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-    <ion-title>Finance</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-header>  
+  <ion-toolbar>  
+    <ion-title style="margin-left: 10px;">  
+Finance    </ion-title>  
+  </ion-toolbar>  
+</ion-header>  
 
-<ion-content>
 
-</ion-content>
+<ion-content class="ion-padding">
+
+  <!-- main app container -->
+  <div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h3 style="font-family: Gilroy;">Finance Form </h3>
+                <form [formGroup]="financeForm" (ngSubmit)="onSubmit()">
+
+          
+                  <div class="form-group">
+                    <label>Amount</label>
+                    <input type="text" formControlName="amount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.amount.errors }" />
+                    <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
+                        <div *ngIf="f.amount.errors.required">Amount is required</div>
+                    </div>
+                </div>
+                  <div class="form-group">
+                    <label>Intrest(%)</label>
+                    <input type="text" formControlName="intrest" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.intrest.errors }" />
+                    <div *ngIf="submitted && f.intrest.errors" class="invalid-feedback">
+                        <div *ngIf="f.intrest.errors.required">Intrest is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Time period(months or years)</label>
+                  <input type="text" formControlName="time" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.time.errors }" />
+                  <div *ngIf="submitted && f.time.errors" class="invalid-feedback">
+                      <div *ngIf="f.time.errors.required">Time period is required</div>
+                  </div>
+              </div>
+             
+          
+                    <div class="form-group">
+                      <button type="submit" class="button" >Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  </ion-content>
+>
+
+

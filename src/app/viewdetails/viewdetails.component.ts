@@ -19,24 +19,16 @@ Details:any[];
 
   constructor(private http:HttpClient,private api:ApiService,private router:Router) { 
     console.log(this.service);
-    
   }
+
+  
 
   getData(details){
     this.api.sharedData = details;
     console.log(this.api.sharedData);
-
-
-    // localStorage.setItem("cab",JSON.stringify(details))
-// this.Details =details;
     this.router.navigateByUrl('userdetails');
-
-    //  this.http.get("http://localhost:1337/cabservices/"+id).subscribe((res)=>{
-    //    console.log(res);
-
-    //    localStorage.setItem("cab",JSON.stringify(res))
-    //  })
   }
+
   ngOnInit() {
     if(this.service ==="Construction" ){
       var servicename="constructions";

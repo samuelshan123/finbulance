@@ -83,6 +83,18 @@ this.Details =construction
 this.Details =interiors
 
   }
+  else if(this.service==="AC Service"){
+
+    let ac=["Name : "+this.data.user_id.name,
+    "E-mail : "+this.data.user_id.email,
+    "Price : "+this.data.price,
+    "Capacity (Tons or Litre) : "+this.data.litre,
+    "AC Type : "+this.data.type,
+  "Address : "+this.data.address]
+
+  this.Details =ac
+
+  }
 }
 
 
