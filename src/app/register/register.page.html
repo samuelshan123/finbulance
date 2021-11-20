@@ -12,48 +12,57 @@ Finbulance    </ion-title>
   <h3>Sign up to get started!</h3>
 
   <form [formGroup]="regForm" (ngSubmit)="onSubmit()" novalidate>
+
     <app-input label="Full Name" 
     formControlName="name" type="text" ngDefaultControl ></app-input> 
    
-    <span class="error ion-padding" *ngIf="submitted && errorCtr.name.errors?.required">
+    <span style="padding-left: 5px;"class="error ion-padding" *ngIf="submitted && errorCtr.name.errors?.required">
       Name is required.
     </span>
-    <span class="error ion-padding" *ngIf="submitted && errorCtr.name.errors?.minlength">
+    <span style="padding-left: 5px;"class="error ion-padding" *ngIf="submitted && errorCtr.name.errors?.minlength">
       Min 4 chars long.
     </span>
     
+    <div style="margin-top: 10px;">
+
     <app-input label="Email ID"  type="email"  formControlName="email"
      ngDefaultControl  ></app-input>
     
-     <span class="error" *ngIf="submitted && errorCtr.email.errors?.required">
+     <span style="padding-left: 5px;"class="error" *ngIf="submitted && errorCtr.email.errors?.required">
       Email is required.
     </span>
-    <span class="error" *ngIf="submitted && errorCtr.email.errors?.pattern">
+    <span style="padding-left: 5px;"class="error" *ngIf="submitted && errorCtr.email.errors?.pattern">
       Enter valid email.
     </span>
-    
+    </div>
+
+    <div style="margin-top: 10px;">
+
     <app-input label="Phone" 
     formControlName="phone" type="numeric" ngDefaultControl ></app-input> 
-    <span class="error ion-padding" *ngIf="submitted && errorCtr.phone.errors?.required">
+    <span style="padding-left: 5px;"class="error ion-padding" *ngIf="submitted && errorCtr.phone.errors?.required">
       phone is required.
     </span>
+    </div>
+    <div style="margin-top: 10px;">
+
     <app-input label="Password" type="password" ngDefaultControl formControlName="password" ></app-input>
-    <span class="error" *ngIf="submitted && errorCtr.password.errors?.required">
+    <span style="padding-left: 5px;"class="error" *ngIf="submitted && errorCtr.password.errors?.required">
       Password is required.
     </span>
-    <span class="error" *ngIf="submitted && errorCtr.password.errors?.minlength">
+    <span style="padding-left: 5px;"class="error" *ngIf="submitted && errorCtr.password.errors?.minlength">
      Password should minimum 8 chars long.
     </span>
-   
+   </div>
     <!-- Service Type -->
-    <div style="text-align: justify;margin-left: 10px;">
-      <h6 style="font-weight: 600;">Service Type</h6>
+    <div style="text-align: justify;margin-left: 10px; margin-top: 10px;">
+      <h6 style="font-size: 15px;    font-family: Gilroy;">Service Type</h6>
       <div>
 
         <div style="margin-top: 10px;">
-          <label   style="margin-left: 5px;" class="custom-control-label">
-            <input (change)='check($event)'  [(ngModel)]="type" type="radio" value="service requester"  name ="type" formControlName="type"
-            >
+          <label   style="margin-left: 5px;" >
+            <input (change)='check($event)'  
+            [(ngModel)]="type" type="radio" value="service requester"  name ="type" formControlName="type"/>
             Service Requester </label>
           
         <div style="margin-top: 5px;padding-bottom: 15px;">
@@ -71,14 +80,9 @@ Finbulance    </ion-title>
       <div  *ngIf="type ==='service provider'" >
       
 
-<!-- 
-        <app-input label="Service Name" 
-    formControlName="servicename" type="text" ngDefaultControl ></app-input> 
-    <span class="error ion-padding" *ngIf="submitted && errorCtr.servicename.errors?.required">
-      Service Type is required.
-    </span> -->
-    <div class="mb-3">
-      <select class="custom-select"  formControlName="servicename">
+
+    <div class="mb-3" >
+      <select style="padding-left: 10px; border-radius: 8px;"  class="custom-select"  formControlName="servicename">
         <option value="">Choose your service</option>
         <option *ngFor="let service of Service" [ngValue]="service">{{service}}</option>
       </select>
@@ -90,15 +94,18 @@ Finbulance    </ion-title>
     
     <app-input label="Organization Name" 
     formControlName="orgname" type="text" ngDefaultControl></app-input> 
-    <span class="error ion-padding" *ngIf="submitted && errorCtr.orgname.errors?.required">
+    <span style="padding-left: 5px;"class="error ion-padding" *ngIf="submitted && errorCtr.orgname.errors?.required">
       Organization Name is required.
     </span>
+    
+    <div style="margin-top: 10px;">
 
     <app-input label="Pan Number" 
     formControlName="pan" type="text" ngDefaultControl ></app-input> 
-    <span class="error ion-padding" *ngIf="submitted && errorCtr.pan.errors?.required">
+    <span style="padding-left: 5px;"class="error ion-padding" *ngIf="submitted && errorCtr.pan.errors?.required">
       Pan Number is required.
     </span>
+    </div>
       </div>
         <!-- <div class="error" *ngIf="submitted && errorCtr.errors?.required">
           <p>Please select either value</p>

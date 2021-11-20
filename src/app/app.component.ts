@@ -13,7 +13,7 @@ export class AppComponent {
     this.initilizeApp();
   }
 
-
+         
   initilizeApp(){
       this.router.navigateByUrl('login')
   }

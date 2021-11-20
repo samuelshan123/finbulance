@@ -1,24 +1,84 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Construction</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-header>  
+  <ion-toolbar>  
+    <ion-title style="margin-left: 10px;">  
+Construction    </ion-title>  
+  </ion-toolbar>  
+</ion-header>  
 
-<ion-content>
+<ion-content class="ion-padding">
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+              <h3>Construction Form</h3>
+              <form [formGroup]="constructionForm" (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                      <label>Square Feet</label>
+                      <input type="text" formControlName="sqrft" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sqrft.errors }" />
+                      <div *ngIf="submitted && f.sqrft.errors" class="invalid-feedback">
+                          <div *ngIf="f.sqrft.errors.required">Square Feet is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label>Budget</label>
+                      <input type="text" formControlName="budget" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.budget.errors }" />
+                      <div *ngIf="submitted && f.budget.errors" class="invalid-feedback">
+                          <div *ngIf="f.budget.errors.required">Budget is required</div>
+                      </div>
+                  </div>
 
+                  <div class="form-group" >
+                    <label>Contract</label>
 
+                    <select style="padding-left: 10px; border-radius: 8px;"  class="custom-select"  formControlName="contract" 
+                    [ngClass]="{ 'is-invalid': submitted && f.contract.errors }">
+                      <option value="">Choose Contract </option>
+                      <option *ngFor="let contract of Contract" [ngValue]="contract">{{contract}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.contract.errors" class="invalid-feedback">
+                        <div *ngIf="f.contract.errors.required">Contract is required</div>
+                    </div>
+                    
+                    <!-- <div class="invalid-feedback" *ngIf="submitted && errorCtr.construction.errors?.required">
+                      <sup>*</sup>select any service
+                    </div> -->
+                  </div> 
 
+                  <div class="form-group" >
+                    <label>Area</label>
 
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-<!-- <div class="form-group">
-  <label>Amount</label>
-  <input type="text" formControlName="Amount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Amount.errors }" />
-  <div *ngIf="submitted && f.Amount.errors" class="invalid-feedback">
-      <div *ngIf="f.Amount.errors.required">Amount is required</div>
+                    <select style="padding-left: 10px; border-radius: 8px;"  class="custom-select"  formControlName="area" 
+                    [ngClass]="{ 'is-invalid': submitted && f.area.errors }">
+                      <option value="">Choose Area</option>
+                      <option *ngFor="let area of Area" [ngValue]="area">{{area}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.area.errors" class="invalid-feedback">
+                        <div *ngIf="f.area.errors.required">Area is required</div>
+                    </div>
+                  </div> 
+                  
+                  <div class="form-group">
+                      <label>Time Period (Months)</label>
+                      <input type="text" formControlName="months" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.months.errors }" />
+                      <div *ngIf="submitted && f.months.errors" class="invalid-feedback">
+                          <div *ngIf="f.months.errors.required">Time Period is required</div>
+                      </div>
+                  </div>
+               
+                  <div class="form-group">
+                    <label>Notes</label>
+                    <textarea type="text"  rows="2" formControlName="notes" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.notes.errors }" ></textarea>
+                    <div *ngIf="submitted && f.notes.errors" class="invalid-feedback">
+                        <div *ngIf="f.notes.errors.required">Notes is required</div>
+                    </div>
+                </div>
+
+                  <div class="form-group">
+                    <button type="submit" class="button" >Submit</button>
+                  </div>
+              </form>
+          </div>
+      </div>
   </div>
-</div> -->
-</form>
+</div>
 </ion-content>

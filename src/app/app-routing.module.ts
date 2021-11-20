@@ -33,10 +33,32 @@ const routes: Routes = [
   {
     path: 'finance',
     loadChildren: () => import('./Requesterpages/finance/finance.module').then(m =>m.FinancePageModule)
-  },  {
+  },
+  {
     path: 'serviceprovider',
     loadChildren: () => import('./serviceprovider/serviceprovider.module').then( m => m.ServiceproviderPageModule)
   },
+
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'acservices',
+    loadChildren: () => import('./Requesterpages/acservices/acservices.module').then( m => m.AcservicesPageModule)
+  },
+  {
+    path: 'userdetails',
+    loadChildren: () => import('./userdetails/userdetails.module').then( m => m.UserdetailsPageModule)
+  },
+  {
+    path: 'userdetails',
+    loadChildren: () => import('./userdetails/userdetails.module').then( m => m.UserdetailsPageModule)
+  },
+    
+
+
+
 
   
       

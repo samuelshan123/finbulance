@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { MenuController, Platform } from '@ionic/angular';
+import { MenuController, Platform, PopoverController } from '@ionic/angular';
+import { ProfilePage } from '../profile/profile.page';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +9,9 @@ import { MenuController, Platform } from '@ionic/angular';
 })
 export class HomePage {
 
+Pages:any=[];
 
-  Pages = [
+  requesterpage = [
     {
       title: 'Services',
       icon: 'cog',
@@ -17,8 +19,8 @@ export class HomePage {
         { title: 'Construction', url: '/home/construction', icon: 'construct' },
         { title: 'Finance', url: '/home/finance', icon: 'logo-usd' },
         { title: 'Medical Emergency', url: '/home/medical', icon: 'medkit' },
-        { title: 'Home Appliances', url: '/home/homeappliances', icon: 'home' },
-        { title: 'Vehicle', url: '/home/vehicle', icon: 'build' },
+        { title: 'AC Service', url: '/home/acservices', icon: 'snow' },
+        { title: 'House Interiors', url: '/home/houseinteriors', icon: 'home' },
         { title: 'Cab Services', url: '/home/cabservices', icon: 'car' }
       ]
     },
@@ -34,15 +36,43 @@ export class HomePage {
     // }
   ];
 
-  constructor( private platform: Platform,) {
-    this.initializeApp();
-  }
+  providerpage=[
+    {
+      title: 'Notification',
+      url: '/home/mybooking',
+      icon: 'notifications'
+    },
+    {
+      title: 'Service Status',
+      icon: 'ticket',
+      children: [
+        { title: 'Cancelled Services', url: '/home/construction', icon: 'close-circle-outline' },
+        { title: 'Pending Services', url: '/home/finance', icon: 'hourglass' },
+        { title: 'Completed Services', url: '/home/medical', icon: 'checkmark-circle-outline' },
+      ]
+    },
+  ];
+ usertype:string=localStorage.getItem("type");
+  selectedmenuName: any;
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      // this.statusBar.styleDefault();
-      // this.splashScreen.hide();
-    });
+  constructor(public popoverCtrl:PopoverController ) {
+   if(this.usertype==="service requester"){
+     this.Pages=this.requesterpage;
+   }
+   else if(this.usertype==="service provider"){
+    this.Pages=this.providerpage;
+   }
+  }
+  async notifications(ev: any) {  
+    const popover = await this.popoverCtrl.create({  
+        component: ProfilePage,  
+      event: ev, 
+    });  
+    return await popover.present();  
+  }  
+ 
+  public selectedmenu(menu){
+    this.selectedmenuName=menu.title;
   }
 
 

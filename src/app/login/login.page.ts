@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NavController, ToastController } from '@ionic/angular';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -14,12 +15,11 @@ export class LoginPage implements OnInit {
 
   myForm: FormGroup;
   submitted = false;
-  API ="http://localhost:1337/fb-users/userlogin";
 
   email:string;
   password:string;
 
-  constructor(private http:HttpClient,public formBuilder: FormBuilder,public router:Router,public toastCtrl: ToastController,public navCtrl: NavController) { }
+  constructor(private api:ApiService,private http:HttpClient,public formBuilder: FormBuilder,public router:Router,public toastCtrl: ToastController,public navCtrl: NavController) { }
 
   ngOnInit() {
     this.myForm = this.formBuilder.group({
@@ -51,7 +51,7 @@ export class LoginPage implements OnInit {
   }  
   async openFailToast() {  
     const toast = await this.toastCtrl.create({  
-      message: 'Login Failed!!!',
+      message: 'Invalid User Data!!!',
             duration: 2000  
 
     });  
@@ -65,6 +65,7 @@ export class LoginPage implements OnInit {
     return this.myForm.controls;
   }
 
+  
   onSubmit() {
     this.submitted = true;
     if (!this.myForm.valid) {
@@ -76,49 +77,40 @@ export class LoginPage implements OnInit {
       console.log(this.myForm.value)
     }
   }
-
-  login() {
-    console.log("working fine")
-  
-
-   // this.http.get(this.API,this.myForm.value)
-     this.http.post(this.API,this.myForm.value)
+  login(){
+    this.api.login(this.myForm.value)
     .subscribe((res:any)=>{
-      console.log(res)
-   if(res.message=="success")  {
-    let info = res.user[0];
+      console.log(res);
+      if(res.message=="success"){
+        let info = res.user[0];
+        localStorage.setItem("id",info.id);
+        localStorage.setItem("service",info.servicename);
+        localStorage.setItem("type",info.type);
+        
+        
+        if (info.type=="service provider") {
+          localStorage.setItem("name",info.name);
+          localStorage.setItem("email",info.email);
+          this.openSucessToast();
+          this.router.navigate(["/home"]);
 
-    localStorage.setItem("id",info.id);
-
-         localStorage.setItem("servicename",info.servicename);
     
+        } else if (info.type=="service requester"){
+          localStorage.setItem("name",info.name);
+          localStorage.setItem("email",info.email);
+          //console.log(res[0].name);
+          this.openSucessToast();
+          this.router.navigate(["/home"]);
+        } 
+      }
 
-    if (info.type=="service provider") {
-      
-      console.log(res);
-      console.log(info.type);
-      this.openSucessToast();
-      localStorage.setItem("name",info.name);
-      localStorage.setItem("email",info.email);
-      this.openSucessToast();
-      this.router.navigate(["/serviceprovider"]);
-
-    } else if (info.type=="service requester"){
-      console.log(res);
-       console.log(info.type);
-      localStorage.setItem("name",info.name);
-      localStorage.setItem("email",info.email);
-
-      console.log(info.name);
-      this.router.navigate(["/home/finance"]);
-    }
     else{
-      console.log("something went wrong");
-      this.openFailToast();
-      
-    }
-  }
-    });
+          console.log("something went wrong");
+          this.openFailToast(); 
+
+      }
+    }    
+    );
       }
     }
  

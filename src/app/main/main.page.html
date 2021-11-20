@@ -1,17 +1,28 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button ></ion-menu-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button (click)="notifications($event)">
-        <img style="width: 30px;"  src="assets/avatar.png"/>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>Home</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
+<!-- 
   
-</ion-content>
+  
+    <ion-searchbar style="margin-top: 15%;" [(ngModel)]="autocomplete.input" (ionInput)="UpdateSearchResults()" placeholder="Search for a place"  (ionClear)="ClearAutocomplete()"></ion-searchbar>
+  
+    <ion-list [hidden]="autocompleteItems.length == 0">
+      <ion-item *ngFor="let item of autocompleteItems" tappable (click)="SelectSearchResult(item)">
+        {{ item.description }}
+      </ion-item>
+    </ion-list>
+  <ion-content>  
+      
+    <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+      <ion-fab-button (click)="ShowCords()" ion-fab color="tertiary">
+        <ion-icon name="information-circle-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    <div class="map-wrapper" style="height: 100%;">      
+      <div id="map_center">
+        <ion-icon name="pin" size="large" color="danger"></ion-icon>      
+      </div>
+      <div #map id="map"  style="height: 100%;"></div>
+    </div>   
+  </ion-content>
+  
+   -->
+   <app-map *ngIf="type ==='service requester'"></app-map>
+   <app-viewdetails *ngIf="type ==='service provider'"></app-viewdetails>

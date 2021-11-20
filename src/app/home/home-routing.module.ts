@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MainPage } from '../main/main.page';
+import { MapComponent } from '../map/map.component';
+import { TestComponent } from '../test/test.component';
+import { ViewdetailsComponent } from '../viewdetails/viewdetails.component';
 import { HomePage } from './home.page';
 
 
@@ -11,11 +15,16 @@ const routes: Routes = [
     children: [
       {
         path: 'main',
-        loadChildren: () => import('../main/main.module').then( m => m.MainPageModule)
+        // loadChildren: () => import('../main/main.module').then( m => m.MainPageModule)
+        component:TestComponent
       },
       {
         path: 'construction',
         loadChildren: () => import('../Requesterpages/construction/construction.module').then( m => m.ConstructionPageModule)
+      },
+      {
+        path: 'acservices',
+        loadChildren: () => import('../Requesterpages/acservices/acservices.module').then( m => m.AcservicesPageModule)
       },
       {
         path: 'finance',
@@ -34,12 +43,8 @@ const routes: Routes = [
         loadChildren: () => import('../Requesterpages/cabservices/cabservices.module').then( m => m.CabservicesPageModule)
       },
       {
-        path: 'homeappliances',
-        loadChildren: () => import('../Requesterpages/homeappliances/homeappliances.module').then( m => m.HomeappliancesPageModule)
-      },
-      {
-        path: 'vehicle',
-        loadChildren: () => import('../Requesterpages/vehicle/vehicle.module').then( m => m.VehiclePageModule)
+        path: 'houseinteriors',
+        loadChildren: () => import('../Requesterpages/houseinteriors/houseinteriors.module').then( m => m.HouseinteriorsPageModule)
       },
     ]
   }
