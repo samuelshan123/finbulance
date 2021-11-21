@@ -36,10 +36,10 @@
                    </div>
 
                       <div class="form-group">
-                          <label>Description</label>
-                          <input type="text" rows="2" formControlName="desc" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.desc.errors }" />
-                          <div *ngIf="submitted && f.desc.errors" class="invalid-feedback">
-                              <div *ngIf="f.desc.errors.required">Description is required</div>
+                          <label>Notes</label>
+                          <input type="text" rows="2" formControlName="note" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.note.errors }" />
+                          <div *ngIf="submitted && f.note.errors" class="invalid-feedback">
+                              <div *ngIf="f.note.errors.required">Description is required</div>
                           </div>
                       </div>
                         <div class="container">

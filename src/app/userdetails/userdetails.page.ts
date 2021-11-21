@@ -39,7 +39,7 @@ export class UserdetailsPage implements OnInit {
   }
   ngOnInit() {
     this.detForm = this.formBuilder.group({
-      desc: ['', Validators.required]
+      note: ['', Validators.required]
   });
   
   if (this.service ==="Cab Services") {
