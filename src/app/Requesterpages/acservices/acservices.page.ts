@@ -45,7 +45,7 @@ export class AcservicesPage implements OnInit {
            type:this.acForm.value.type,
            address:this.acForm.value.type,
            user_id:this.id,
-           staus:"open"
+           status:"open"
           }
         
            console.log(this.acForm.value);

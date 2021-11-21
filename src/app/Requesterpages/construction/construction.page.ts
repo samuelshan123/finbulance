@@ -54,7 +54,7 @@ export class ConstructionPage implements OnInit {
           area:this.constructionForm.value.area,
           notes:this.constructionForm.value.notes,
           user_id:this.id,
-          staus:"open"
+          status:"open"
 
 
         }

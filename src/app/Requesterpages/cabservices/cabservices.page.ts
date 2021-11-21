@@ -66,7 +66,7 @@ export class CabservicesPage implements OnInit {
          return_date:this.cabForm.value.return_date,
          trip:this.cabForm.value.trip,
          user_id:this.id,
-         staus:"open"
+         status:"open"
 
         }
       
