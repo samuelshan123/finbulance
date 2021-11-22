@@ -49,14 +49,15 @@ let cab =[
   {name:"Name",value:this.data.user_id.name},
   {name:"E-mail",value:this.data.user_id.email},
   {name:"Phone",value:this.data.user_id.phone},
-  {name:"Destination",value:this.data.destination},
   {name:"Pickup",value:this.data.pickup},
   {name:"Pickup Date",value:this.data.pickup_date},
-  {name:"Return Date",value:this.data.return_date},
-  {name:"Trip",value:this.data.trip},
   {name:"Person",value:this.data.person},
   {name:"Vehicle",value:this.data.vehicle},
-  {name:"Note",value:this.data.note}
+  {name:"Trip",value:this.data.trip},
+  {name:"Destination",value:this.data.destination},
+  {name:"Return Date",value:this.data.return_date},
+
+
 
 ]
 
@@ -75,12 +76,13 @@ let cab =[
 // ]
 let construction=[{name:"Name",value:this.data.user_id.name},
 {name:"E-mail",value:this.data.user_id.email},
+{name:"Phone",value:this.data.user_id.phone},
 {name:"Square Feet",value:this.data.sqrft},
 {name:"Budget",value:this.data.budget},
-{name:"Months",value:this.data.months},
-{name:"Contract",value:this.data.contract},
 {name:"Area",value:this.data.area},
-{name:"Notes",value:this.data.notes}]
+{name:"Contract",value:this.data.contract},
+{name:"Months",value:this.data.months},
+]
 
 this.Details =construction
 
@@ -88,24 +90,39 @@ this.Details =construction
 
   else if(this.service==="Interiors"){
 
-    let interiors=["Name : "+this.data.user_id.name,
-  "E-mail : "+this.data.user_id.email,
-  "Work Name : "+this.data.work,
-  "Feet x Feet : "+this.data.feet,
-  "Budget : "+this.data.budget,
-"Time : "+this.data.time,
-"Address : "+this.data.address]
+//     let interiors=["Name : "+this.data.user_id.name,
+//   "E-mail : "+this.data.user_id.email,
+//   "Work Name : "+this.data.work,
+//   "Feet x Feet : "+this.data.feet,
+//   "Budget : "+this.data.budget,
+// "Time : "+this.data.time,
+// "Address : "+this.data.address]
+let interiors =[{name:"Name",value:this.data.user_id.name},
+{name:"E-mail",value:this.data.user_id.email},
+{name:"Phone",value:this.data.user_id.phone},
+{name:"Work Name",value:this.data.work},
+{name:"Feet x Feet",value:this.data.feet},
+{name:"Budget",value:this.data.budget},
+{name:"Time",value:this.data.time},
+{name:"Address",value:this.data.address},]
 this.Details =interiors
 
   }
   else if(this.service==="AC Service"){
 
-    let ac=["Name : "+this.data.user_id.name,
-    "E-mail : "+this.data.user_id.email,
-    "Price : "+this.data.price,
-    "Capacity (Tons or Litre) : "+this.data.litre,
-    "AC Type : "+this.data.type,
-  "Address : "+this.data.address]
+  //   let ac=["Name : "+this.data.user_id.name,
+  //   "E-mail : "+this.data.user_id.email,
+  //   "Price : "+this.data.price,
+  //   "Capacity (Tons or Litre) : "+this.data.litre,
+  //   "AC Type : "+this.data.type,
+  // "Address : "+this.data.address]
+let ac =[{name:"Name",value:this.data.user_id.name},
+{name:"E-mail",value:this.data.user_id.email},
+{name:"Phone",value:this.data.user_id.phone},
+{name:"Price",value:this.data.price},
+{name:"Capacity (Tons or Litre)",value:this.data.litre},
+{name:"AC Type",value:this.data.type},
+{name:"Address",value:this.data.address},]
 
   this.Details =ac
 
@@ -113,12 +130,18 @@ this.Details =interiors
 
   else if(this.service==="Finance"){
       
-      let finance=["Name : "+this.data.user_id.name,
-      "E-mail : "+this.data.user_id.email,
-      "Amount : "+this.data.amount,
-      "Intrest : "+this.data.intrest,
-      "Time Period : "+this.data.time]
+      // let finance=["Name : "+this.data.user_id.name,
+      // "E-mail : "+this.data.user_id.email,
+      // "Amount : "+this.data.amount,
+      // "Intrest : "+this.data.intrest,
+      // "Time Period : "+this.data.time]
   
+      let finance =[{name:"Name",value:this.data.user_id.name},
+      {name:"E-mail",value:this.data.user_id.email},
+      {name:"Phone",value:this.data.user_id.phone},
+      {name:"Amount",value:this.data.amount},
+      {name:"Intrest",value:this.data.intrest},
+      {name:"Time Period",value:this.data.time},]
       this.Details =finance
   
   }

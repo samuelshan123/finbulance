@@ -30,14 +30,13 @@
                   <!-- <h3 style="font-family: Gilroy;">User Details </h3> -->
                   <form [formGroup]="detForm" (ngSubmit)="onSubmit()">
                     <div class="form-group" *ngFor="let details of Details">
-                      <table>
-                        <tr>
-                          <th>{{details.name}}</th>
-                          <th>{{details.value}}</th>
-                        </tr>
-                        </table>
+                    
+        <div class="flex-container">
+               <div class="flex-item-left">{{details.name}}</div>
+                     <div class="flex-item">:</div>
+                   <div class="flex-item-right">{{details.value}}</div>
                    </div>
-
+               </div>
                       <div class="form-group">
                           <label>Notes</label>
                           <input type="text" rows="2" formControlName="note" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.note.errors }" />
