@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-houseinteriors',
@@ -14,7 +15,7 @@ export class HouseinteriorsPage implements OnInit {
   Works: any = ['Kitchen interior','False Celling','Office Interior','Furniture Design']
   id:any =localStorage.getItem("id");
 
-  constructor(private formBuilder: FormBuilder,private http:HttpClient,private router:Router) { }
+  constructor(private formBuilder: FormBuilder,private http:HttpClient,private router:Router,private api:ApiService) { }
 
   ngOnInit() {
       this.interiorForm = this.formBuilder.group({
@@ -47,12 +48,12 @@ export class HouseinteriorsPage implements OnInit {
          time:this.interiorForm.value.time,
          address:this.interiorForm.value.address,
          feet:this.interiorForm.value.feet,
-         user_id:this.id
-
+         user_id:this.id,
+         staus:"open"
        }
 
            console.log(this.interiorForm.value);
-           this.http.post("http://localhost:1337/interiors",Interiors).subscribe((res)=>{
+           this.api.interior(Interiors).subscribe((res)=>{
             console.log(res);
             this.router.navigateByUrl('home')
           })

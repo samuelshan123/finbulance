@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { NavController, ToastController } from '@ionic/angular';
 import { ApiService } from '../services/api.service';
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -13,6 +15,7 @@ import { ApiService } from '../services/api.service';
 export class LoginPage implements OnInit {
   isTextFieldType: boolean;
 
+ 
   myForm: FormGroup;
   submitted = false;
 
@@ -27,6 +30,7 @@ export class LoginPage implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8)]]
       // phone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]]
     })
+    
   }
   async openToast() {  
     const toast = await this.toastCtrl.create({  
@@ -81,10 +85,10 @@ export class LoginPage implements OnInit {
     this.api.login(this.myForm.value)
     .subscribe((res:any)=>{
       console.log(res);
-      if(res.message=="success"){
-        let info = res.user[0];
+      let info = res.user[0];
         localStorage.setItem("id",info.id);
         localStorage.setItem("service",info.servicename);
+        if(res.message=="success"){
         localStorage.setItem("type",info.type);
         
         

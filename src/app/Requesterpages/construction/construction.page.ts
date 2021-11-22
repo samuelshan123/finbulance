@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-construction',
@@ -18,7 +19,7 @@ export class ConstructionPage implements OnInit {
   Area: any = ['Town','Village']
 
   
-  constructor(private formBuilder: FormBuilder,private router:Router,private http:HttpClient) { }
+  constructor(private formBuilder: FormBuilder,private router:Router,private http:HttpClient,private api:ApiService) { }
 
   ngOnInit() {
       this.constructionForm = this.formBuilder.group({
@@ -52,12 +53,14 @@ export class ConstructionPage implements OnInit {
           contract:this.constructionForm.value.contract,
           area:this.constructionForm.value.area,
           notes:this.constructionForm.value.notes,
-          user_id:this.id
+          user_id:this.id,
+          status:"open"
+
 
         }
       
          console.log(this.constructionForm.value);
-         this.http.post("http://localhost:1337/constructions",Post).subscribe((res)=>{
+         this.api.construction(Post).subscribe((res)=>{
           console.log(res);
           this.router.navigateByUrl('home')
         })

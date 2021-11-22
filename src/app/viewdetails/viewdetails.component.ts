@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -10,35 +12,31 @@ import { ApiService } from '../services/api.service';
 export class ViewdetailsComponent implements OnInit {
 
   Data:any[];
+
+Details:any[];
+
   service=localStorage.getItem("service");
 
-  constructor(private http:HttpClient,private api:ApiService) { 
+  constructor(private http:HttpClient,private api:ApiService,private router:Router) { 
     console.log(this.service);
-    
   }
 
-
-
-  getData(id){
-    console.log(id);
-    //  this.http.get("http://localhost:1337/cabservices/"+id).subscribe((res)=>{
-    //    console.log(res);
-
-    //    localStorage.setItem("cab",JSON.stringify(res))
-    //  })
   
-    
 
+  getData(details){
+    this.api.sharedData = details;
+    console.log(this.api.sharedData);
+    this.router.navigateByUrl('userdetails');
   }
+
   ngOnInit() {
     if(this.service ==="Construction" ){
       var servicename="constructions";
       this.api.getRequests(servicename).subscribe((res:any)=>{
         this.Data=res;
+
         console.log(this.Data); 
       })
-      
-
     }
      
     else if(this.service ==="AC Service" ){

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-acservices',
@@ -14,7 +15,7 @@ export class AcservicesPage implements OnInit {
   Type: any = ['Cassette','Portable','Split','Window','Tower']
   id:any =localStorage.getItem("id");
 
-  constructor(private formBuilder: FormBuilder,private http:HttpClient,private router:Router) { }
+  constructor(private formBuilder: FormBuilder,private http:HttpClient,private router:Router,private api:ApiService) { }
 
   ngOnInit() {
       this.acForm = this.formBuilder.group({
@@ -44,10 +45,11 @@ export class AcservicesPage implements OnInit {
            type:this.acForm.value.type,
            address:this.acForm.value.type,
            user_id:this.id,
+           status:"open"
           }
         
            console.log(this.acForm.value);
-           this.http.post("http://localhost:1337/acservices",AcService).subscribe((res)=>{
+           this.api.acservice(AcService).subscribe((res)=>{
             console.log(res);
             this.router.navigateByUrl('home')
           })

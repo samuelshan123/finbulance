@@ -29,10 +29,7 @@ const routes: Routes = [
         path: 'finance',
         loadChildren: () => import('../Requesterpages/finance/finance.module').then( m => m.FinancePageModule)
       },
-      {
-        path: 'medical',
-        loadChildren: () => import('../Requesterpages/medical/medical.module').then( m => m.MedicalPageModule)
-      },
+    
       {
         path: 'mybooking',
         loadChildren: () => import('../Requesterpages/mybooking/mybooking.module').then( m => m.MybookingPageModule)
