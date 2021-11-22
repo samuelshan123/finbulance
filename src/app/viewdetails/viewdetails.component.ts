@@ -66,6 +66,14 @@ Details:any[];
       })
       
     }
+    else if(this.service ==="Finance" ){
+          
+      var servicename="Finance";
+      this.api.getRequests(servicename).subscribe((res:any)=>{
+        this.Data=res;
+        console.log(this.Data); 
+      })
+    }
     else{
           console.log("No Data Available");
           

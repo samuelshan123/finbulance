@@ -56,8 +56,8 @@ export class UserdetailsPage implements OnInit {
 
  this.Details =cab
     
-  } else if(this.service ==="Construction") {
-    
+ 
+} else if(this.service ==="Construction") {
 let construction=["Name : "+this.data.user_id.name,
 'E-mail : '+this.data.user_id.email,
 "Square Feet : "+this.data.sqrft,
@@ -94,6 +94,18 @@ this.Details =interiors
 
   this.Details =ac
 
+  }
+
+  else if(this.service==="Finance"){
+      
+      let finance=["Name : "+this.data.user_id.name,
+      "E-mail : "+this.data.user_id.email,
+      "Amount : "+this.data.amount,
+      "Intrest : "+this.data.intrest,
+      "Time Period : "+this.data.time]
+  
+      this.Details =finance
+  
   }
 }
 
