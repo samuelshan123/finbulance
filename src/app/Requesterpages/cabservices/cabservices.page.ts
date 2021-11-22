@@ -27,7 +27,9 @@ export class CabservicesPage implements OnInit {
           vehicle: ['', Validators.required],
           destination: ['', Validators.required],
           trip: ['', Validators.required],
-          pickup_date: ['', Validators.required]     
+          pickup_date: ['', Validators.required],
+          // pickup_time: ['', Validators.required]     
+     
       });
   }
  
@@ -60,6 +62,7 @@ export class CabservicesPage implements OnInit {
       let Cab:any={
          pickup:this.cabForm.value.pickup,
          pickup_date:this.cabForm.value.pickup_date,
+         pickup_time:this.cabForm.value.pickup_time,
          person:this.cabForm.value.person,
          vehicle:this.cabForm.value.vehicle,
          destination:this.cabForm.value.destination,

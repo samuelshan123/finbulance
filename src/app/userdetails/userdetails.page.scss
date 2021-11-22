@@ -34,12 +34,12 @@ ion-toolbar{
 
 .flex-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .flex-item-left {
-  background-color: #ffff;
-  flex: 40%;
+  background-color: #f8f9fa;
+  flex: 45%;
   padding: 10px;
 
 }
@@ -47,14 +47,14 @@ ion-toolbar{
 .flex-item-right {
   padding: 10px;
 
-   background-color: #ffff;
-  flex: 40%;
+  background-color: #f8f9fa;
+  flex: 50%;
 }
 .flex-item {
-  background-color: #ffff;
+  background-color: #f8f9fa;
 
  padding: 10px;
- flex: 10%;
+ flex:5%;
 }
 
 .jumbotron {

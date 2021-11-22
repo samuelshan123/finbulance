@@ -22,16 +22,23 @@ Cab Services    </ion-title>
                   </div>
                   
                   <div class="form-group">
-                    <label>Pickup Date and Time</label>
+                    <label>Pickup Date</label>
                   <div class="datetimepicker">
-                    <input type="datetime-local" id="date"  formControlName="pickup_date"[ngClass]="{ 'is-invalid': submitted && f.pickup_date.errors }" />
+                    <input type="date" id="date"  formControlName="pickup_date"[ngClass]="{ 'is-invalid': submitted && f.pickup_date.errors }" />
                     <div *ngIf="submitted && f.pickup_date.errors" class="invalid-feedback">
-                        <div *ngIf="f.pickup_date.errors.required">Pick-Up Date and Time is required</div>
+                        <div *ngIf="f.pickup_date.errors.required">Pick-Up Date is required</div>
                     </div>
                      <!-- <span></span>
                     <input type="time" id="time"  formControlName="pickup_time"> -->
                   </div>
                   </div>
+                  <div class="form-group">
+                    <label>Pickup time</label>
+                    <ion-item>
+                      <ion-label>Start Time</ion-label>
+                      <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z"></ion-datetime>
+                    </ion-item>
+                                    </div>
                   
 
                   <div class="form-group">

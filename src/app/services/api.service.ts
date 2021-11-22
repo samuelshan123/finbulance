@@ -35,8 +35,8 @@ postservice(service,data){
 
 
  //update views
-  update(data){
-    return this.http.post("http://localhost:1337/update",data)
+  update(service,data){
+    return this.http.post(`http://localhost:1337/${service}/update`,data)
   }
 
 }
