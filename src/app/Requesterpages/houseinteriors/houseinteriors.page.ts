@@ -51,9 +51,10 @@ export class HouseinteriorsPage implements OnInit {
          user_id:this.id,
          staus:"open"
        }
+       const path ="interiors"
 
            console.log(this.interiorForm.value);
-           this.api.interior(Interiors).subscribe((res)=>{
+           this.api.postservice(path,Interiors).subscribe((res)=>{
             console.log(res);
             this.router.navigateByUrl('home')
           })

@@ -47,9 +47,10 @@ export class AcservicesPage implements OnInit {
            user_id:this.id,
            status:"open"
           }
-        
+          const path ="acservices"
+
            console.log(this.acForm.value);
-           this.api.acservice(AcService).subscribe((res)=>{
+           this.api.postservice(path,AcService).subscribe((res)=>{
             console.log(res);
             this.router.navigateByUrl('home')
           })

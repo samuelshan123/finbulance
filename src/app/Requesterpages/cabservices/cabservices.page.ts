@@ -69,9 +69,10 @@ export class CabservicesPage implements OnInit {
          status:"open"
 
         }
-      
+        const path ="cabservices"
+
          console.log(this.cabForm.value);
-         this.api.cabservice(Cab).subscribe((res)=>{
+         this.api.postservice(path,Cab).subscribe((res)=>{
           console.log(res);
           this.router.navigateByUrl('home')
         })

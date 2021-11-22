@@ -44,29 +44,44 @@ export class UserdetailsPage implements OnInit {
   
   if (this.service ==="Cab Services") {
      
-    let cab =['Name : '+this.data.user_id.name,
-    'E-mail : '+this.data.user_id.email,
-    'Pick-up Place : '+this.data.pickup,
-    'Pick-up Date & time : '+this.data.pickup_date,
-    'No of Persons : '+this.data.person,
-    'Vehicle : '+this.data.vehicle,
-    'Destination : '+this.data.destination,
-   "Trip type : "+this.data.trip,
- "Return Date : "+this.data.return_date]
+//     
+let cab =[
+  {name:"Name",value:this.data.user_id.name},
+  {name:"E-mail",value:this.data.user_id.email},
+  {name:"Phone",value:this.data.user_id.phone},
+  {name:"Destination",value:this.data.destination},
+  {name:"Pickup",value:this.data.pickup},
+  {name:"Pickup Date",value:this.data.pickup_date},
+  {name:"Return Date",value:this.data.return_date},
+  {name:"Trip",value:this.data.trip},
+  {name:"Person",value:this.data.person},
+  {name:"Vehicle",value:this.data.vehicle},
+  {name:"Note",value:this.data.note}
+
+]
 
  this.Details =cab
     
  
 } else if(this.service ==="Construction") {
-let construction=["Name : "+this.data.user_id.name,
-'E-mail : '+this.data.user_id.email,
-"Square Feet : "+this.data.sqrft,
-"Budget :" +this.data.budget,
-"Months : "+this.data.months,
-"Contract : "+this.data.contract,
-"Area : "+this.data.area,
-"Notes : "+this.data.notes
-]
+// let construction=["Name : "+this.data.user_id.name,
+// 'E-mail : '+this.data.user_id.email,
+// "Square Feet : "+this.data.sqrft,
+// "Budget :" +this.data.budget,
+// "Months : "+this.data.months,
+// "Contract : "+this.data.contract,
+// "Area : "+this.data.area,
+// "Notes : "+this.data.notes
+// ]
+let construction=[{name:"Name",value:this.data.user_id.name},
+{name:"E-mail",value:this.data.user_id.email},
+{name:"Square Feet",value:this.data.sqrft},
+{name:"Budget",value:this.data.budget},
+{name:"Months",value:this.data.months},
+{name:"Contract",value:this.data.contract},
+{name:"Area",value:this.data.area},
+{name:"Notes",value:this.data.notes}]
+
 this.Details =construction
 
   }
