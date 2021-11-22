@@ -41,9 +41,9 @@ export class FinancePage implements OnInit {
         user_id:this.id,
         status:"open"
       }
-
+        const path ="finances"
           console.log(this.financeForm.value);
-          this.api.finance(Finance).subscribe((res)=>{
+          this.api.postservice(path,Finance).subscribe((res)=>{
            console.log(res);
            this.router.navigateByUrl('home')
          })

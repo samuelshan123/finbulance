@@ -58,9 +58,9 @@ export class ConstructionPage implements OnInit {
 
 
         }
-      
+       const path ="constructions"
          console.log(this.constructionForm.value);
-         this.api.construction(Post).subscribe((res)=>{
+         this.api.postservice(path,Post).subscribe((res)=>{
           console.log(res);
           this.router.navigateByUrl('home')
         })
