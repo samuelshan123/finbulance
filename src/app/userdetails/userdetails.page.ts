@@ -1,6 +1,6 @@
+import { DatePipe, formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { ApiService } from '../services/api.service';
 import { ViewdetailsComponent } from '../viewdetails/viewdetails.component';
 
@@ -37,25 +37,34 @@ export class UserdetailsPage implements OnInit {
           
     //}
   }
+  
+  
   ngOnInit() {
     this.detForm = this.formBuilder.group({
       note: ['', Validators.required]
   });
   
+  
   if (this.service ==="Cab Services") {
      
-//     
+ 
+    var time = new Date(this.data.pickup_date)
+    var return_time = new Date(this.data.return_date)
+    
 let cab =[
   {name:"Name",value:this.data.user_id.name},
   {name:"E-mail",value:this.data.user_id.email},
   {name:"Phone",value:this.data.user_id.phone},
   {name:"Pickup",value:this.data.pickup},
-  {name:"Pickup Date",value:this.data.pickup_date},
+  {name:"Pickup Date",value:time.toDateString()},
+  {name:"Pickup Time",value:time.toLocaleString('en-US', { hour: 'numeric',minute:'2-digit' ,hour12: true })},
   {name:"Person",value:this.data.person},
   {name:"Vehicle",value:this.data.vehicle},
   {name:"Trip",value:this.data.trip},
   {name:"Destination",value:this.data.destination},
-  {name:"Return Date",value:this.data.return_date},
+  {name:"Return Date",value:return_time.toLocaleString('en-US', { hour: 'numeric',minute:'2-digit' ,hour12: true })},
+  {name:"Return Time",value:return_time.toDateString()},
+
 
 
 

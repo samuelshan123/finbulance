@@ -27,9 +27,7 @@ export class CabservicesPage implements OnInit {
           vehicle: ['', Validators.required],
           destination: ['', Validators.required],
           trip: ['', Validators.required],
-          pickup_date: ['', Validators.required],
-          // pickup_time: ['', Validators.required]     
-     
+          pickup_date: ['', Validators.required],     
       });
   }
  
@@ -48,8 +46,11 @@ export class CabservicesPage implements OnInit {
   }
   }
   get f() { return this.cabForm.controls; }
+ 
 
+  
   onSubmit() {
+   
       this.submitted = true;
 
       if (this.cabForm.invalid) {
