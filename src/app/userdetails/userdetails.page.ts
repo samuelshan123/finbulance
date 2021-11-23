@@ -21,23 +21,12 @@ export class UserdetailsPage implements OnInit {
 
 
      Details:any[] 
-    //  Fields:any[];
-    //  Values:any;
-
-    //  User:any={
-    //   name:this.data.user_id.name,
-    //   email:this.data.user_id.email,
-    //   destination:this.data.destination
-
-    //  }
+    
+     
 
   constructor(private formBuilder: FormBuilder,private api:ApiService){
-    // for(const key in this.User) {
-    // console.log(`${key} : ${this.User[key]}`);
-          
-    //}
-  }
   
+  }
   
   ngOnInit() {
     this.detForm = this.formBuilder.group({
@@ -46,43 +35,44 @@ export class UserdetailsPage implements OnInit {
   
   
   if (this.service ==="Cab Services") {
-     
- 
-    var time = new Date(this.data.pickup_date)
-    var return_time = new Date(this.data.return_date)
+    var ptime = new Date(this.data.pickup_date)
+   var return_time = new Date(this.data.return_date)
+
+    var time;
+    var date;
+    if (this.data.return_date === null ||"") {
+      time = "-"
+      date ="-"
+    }else{
+      
+      time = return_time.toLocaleString('en-US', { hour: 'numeric',minute:'2-digit' ,hour12: true })
+
+      date=  return_time.toISOString().split('T')[0].split('-').reverse().join('-')
+
+    }
+      
+    
     
 let cab =[
   {name:"Name",value:this.data.user_id.name},
   {name:"E-mail",value:this.data.user_id.email},
   {name:"Phone",value:this.data.user_id.phone},
   {name:"Pickup",value:this.data.pickup},
-  {name:"Pickup Date",value:time.toDateString()},
-  {name:"Pickup Time",value:time.toLocaleString('en-US', { hour: 'numeric',minute:'2-digit' ,hour12: true })},
+  {name:"Pickup Date",value:ptime.toISOString().split('T')[0].split('-').reverse().join('-')},
+  {name:"Pickup Time",value:ptime.toLocaleString('en-US', { hour: 'numeric',minute:'2-digit' ,hour12: true })},
   {name:"Person",value:this.data.person},
   {name:"Vehicle",value:this.data.vehicle},
   {name:"Trip",value:this.data.trip},
   {name:"Destination",value:this.data.destination},
-  {name:"Return Date",value:return_time.toLocaleString('en-US', { hour: 'numeric',minute:'2-digit' ,hour12: true })},
-  {name:"Return Time",value:return_time.toDateString()},
-
-
-
-
+  {name:"Return Date",value:date},
+  {name:"Return Time",value:time},
 ]
 
  this.Details =cab
     
  
 } else if(this.service ==="Construction") {
-// let construction=["Name : "+this.data.user_id.name,
-// 'E-mail : '+this.data.user_id.email,
-// "Square Feet : "+this.data.sqrft,
-// "Budget :" +this.data.budget,
-// "Months : "+this.data.months,
-// "Contract : "+this.data.contract,
-// "Area : "+this.data.area,
-// "Notes : "+this.data.notes
-// ]
+
 let construction=[{name:"Name",value:this.data.user_id.name},
 {name:"E-mail",value:this.data.user_id.email},
 {name:"Phone",value:this.data.user_id.phone},
@@ -99,13 +89,6 @@ this.Details =construction
 
   else if(this.service==="Interiors"){
 
-//     let interiors=["Name : "+this.data.user_id.name,
-//   "E-mail : "+this.data.user_id.email,
-//   "Work Name : "+this.data.work,
-//   "Feet x Feet : "+this.data.feet,
-//   "Budget : "+this.data.budget,
-// "Time : "+this.data.time,
-// "Address : "+this.data.address]
 let interiors =[{name:"Name",value:this.data.user_id.name},
 {name:"E-mail",value:this.data.user_id.email},
 {name:"Phone",value:this.data.user_id.phone},
@@ -118,13 +101,6 @@ this.Details =interiors
 
   }
   else if(this.service==="AC Service"){
-
-  //   let ac=["Name : "+this.data.user_id.name,
-  //   "E-mail : "+this.data.user_id.email,
-  //   "Price : "+this.data.price,
-  //   "Capacity (Tons or Litre) : "+this.data.litre,
-  //   "AC Type : "+this.data.type,
-  // "Address : "+this.data.address]
 let ac =[{name:"Name",value:this.data.user_id.name},
 {name:"E-mail",value:this.data.user_id.email},
 {name:"Phone",value:this.data.user_id.phone},
@@ -138,13 +114,7 @@ let ac =[{name:"Name",value:this.data.user_id.name},
   }
 
   else if(this.service==="Finance"){
-      
-      // let finance=["Name : "+this.data.user_id.name,
-      // "E-mail : "+this.data.user_id.email,
-      // "Amount : "+this.data.amount,
-      // "Intrest : "+this.data.intrest,
-      // "Time Period : "+this.data.time]
-  
+     
       let finance =[{name:"Name",value:this.data.user_id.name},
       {name:"E-mail",value:this.data.user_id.email},
       {name:"Phone",value:this.data.user_id.phone},
