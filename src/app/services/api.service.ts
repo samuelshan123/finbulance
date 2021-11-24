@@ -30,13 +30,13 @@ login(data){
 }
 //post service
 postservice(service,data){
-  return this.http.get(`http://localhost:1337/${service}`,data);
+  return this.http.post(`http://localhost:1337/${service}`,data);
 }
 
 
  //update views
-  update(data){
-    return this.http.post("http://localhost:1337/update",data)
+  update(service,data){
+    return this.http.post(`http://localhost:1337/${service}/update`,data)
   }
 
 }

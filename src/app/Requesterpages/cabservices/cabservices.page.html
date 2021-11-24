@@ -10,7 +10,7 @@ Cab Services    </ion-title>
   <div class="container">
       <div class="row">
           <div class="col-md-6 offset-md-3">
-              <h3>Book Your Cab</h3>
+              <!-- <h3>Book Your Cab</h3> -->
               <form [formGroup]="cabForm" (ngSubmit)="onSubmit()">
                 
                   <div class="form-group">
@@ -22,16 +22,17 @@ Cab Services    </ion-title>
                   </div>
                   
                   <div class="form-group">
-                    <label>Pickup Date and Time</label>
+                    <label>Pickup Date & Time</label><br>
                   <div class="datetimepicker">
-                    <input type="datetime-local" id="date"  formControlName="pickup_date"[ngClass]="{ 'is-invalid': submitted && f.pickup_date.errors }" />
+                    <input type="datetime-local" id="date"  formControlName="pickup_date" [ngClass]="{ 'is-invalid': submitted && f.pickup_date.errors }" />
                     <div *ngIf="submitted && f.pickup_date.errors" class="invalid-feedback">
-                        <div *ngIf="f.pickup_date.errors.required">Pick-Up Date and Time is required</div>
+                        <div *ngIf="f.pickup_date.errors.required">Pick-Up Date & time is required</div>
                     </div>
                      <!-- <span></span>
                     <input type="time" id="time"  formControlName="pickup_time"> -->
                   </div>
                   </div>
+
                   
 
                   <div class="form-group">
@@ -87,17 +88,16 @@ Cab Services    </ion-title>
                 <div  *ngIf="trip ==='round trip'" >
                  
                   <div class="form-group">
-                    <label>Return Date and Time</label>
+                    <label>Return Date & Time </label><br>
                   <div class="datetimepicker">
                     <input type="datetime-local" id="date"  formControlName="return_date"[ngClass]="{ 'is-invalid': submitted && f.return_date.errors }" />
                     <div *ngIf="submitted && f.return_date.errors" class="invalid-feedback">
                         <div *ngIf="f.return_date.errors.required">Return Date and Time is required</div>
                     </div>
-                     <!-- <span></span> 
-                    <input type="time" id="time"  formControlName="pickup_time"> -->
                   </div>
                   </div>
                   
+                 
                   </div>
                  
                  

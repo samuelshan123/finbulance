@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainPage } from '../main/main.page';
 import { MapComponent } from '../map/map.component';
 import { TestComponent } from '../test/test.component';
 import { ViewdetailsComponent } from '../viewdetails/viewdetails.component';
