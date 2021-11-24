@@ -40,7 +40,7 @@ export class UserdetailsPage implements OnInit {
 
     var time;
     var date;
-    if (this.data.return_date === null ||"") {
+    if (this.data.return_date === null) {
       time = "-"
       date ="-"
     }else{
